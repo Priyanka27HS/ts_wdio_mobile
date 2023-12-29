@@ -1,4 +1,5 @@
 import type { Options } from '@wdio/types'
+import { join } from 'path'
 
 // Now you can use 'path' as a variable in your TypeScript code
 export const config: Options.Testrunner = {
@@ -34,7 +35,7 @@ export const config: Options.Testrunner = {
     // will be called from there.
     //
     specs: [
-        './test/specs/**/*.ts'
+        './specs/**/*.ts'
     ],
     // Patterns to exclude.
     exclude: [
@@ -67,7 +68,7 @@ export const config: Options.Testrunner = {
         // capabilities for local Appium web tests on an Android Emulator
             "appium:platformName": "Android",
             "appium:deviceName": "Pixel_6_API_32",
-            "appium:app": "/Users/testvagrant/Documents/ts_wdio/apk/android/Android-MyDemoAppRN.1.3.0.build-244.apk",
+            "appium:app": join(process.cwd(), '/apk/android/Sauce_labs.apk'),
             "appium:automationName": "UiAutomator2",
             "appium:udid": "emulator-5554"
     }],
