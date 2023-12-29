@@ -25,7 +25,7 @@
         "noFallthroughCasesInSwitch": true
     },
     "include": [
-        "test",
+        "src",
         "wdio.conf.ts"
-, "test/pageobjects"    ]
+, "src/pages"    ]
 }
