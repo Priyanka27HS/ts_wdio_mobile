@@ -1,14 +1,14 @@
-import { HomePage } from "./homePage";
+import { ProductsPage } from "./productsPage"
 import { LeftScreenMenuPage } from "./leftScreenMenuPage";
 
 
 export class LoginPage {
 
-    homePage : HomePage;
+    productsPage : ProductsPage;
     leftScreenMenuPage: LeftScreenMenuPage;
 
     constructor() {
-        this.homePage = new HomePage();
+        this.productsPage = new ProductsPage();
         this.leftScreenMenuPage = new LeftScreenMenuPage();
     }
 
@@ -32,7 +32,7 @@ export class LoginPage {
 
     public async login(username : string, password : string) {
 
-        await (await this.homePage.getHamburgerIconEle()).click();
+        await (await this.productsPage.getHamburgerIconEle()).click();
         const menuItemLoginEle = await this.leftScreenMenuPage.getLoginButtonFromSideMenu();
         await menuItemLoginEle.waitForDisplayed();
         await menuItemLoginEle.click();
@@ -46,11 +46,4 @@ export class LoginPage {
         await loginButtonEle.click();
 
     }
-
 }
-
-        // usernameInputField: "~Username input field",
-        // passwordInputField: "~Password input field",
-        // loginButton: "~Login button",
-        // firstProductEle: '(//android.widget.TextView[@content-desc="store item text"])[1]',
-        // errorMessage: '//android.view.ViewGroup[@content-desc="generic-error-message"]/android.widget.TextView',
