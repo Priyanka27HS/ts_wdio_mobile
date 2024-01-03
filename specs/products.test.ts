@@ -34,10 +34,6 @@ describe('Product Price Comparison', () => {
         assert.equal(productsPagePrice, cartPagePrice, 'Product prices do not match');
 
         console.log("*****************FIRST TEST CASE******************");
-
-        // Terminate and Launch the driver again
-    //     await driver.terminateApp("com.saucelabs.mydemoapp.rn");
-    //     await driver.activateApp("com.saucelabs.mydemoapp.rn");
     });
 
     it('Add products to the cart and remove item', async () => {
@@ -57,9 +53,5 @@ describe('Product Price Comparison', () => {
 
         (await myCartScreen.getGoShoppingButton()).click();
         console.log("**********************SECOND TEST CASE END***************************");
-
-        // Terminate and Launch the driver again
-        // await driver.terminateApp("com.saucelabs.mydemoapp.rn");
-        // await driver.activateApp("com.saucelabs.mydemoapp.rn");
     });
 })
