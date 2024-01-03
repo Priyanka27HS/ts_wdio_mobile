@@ -1,11 +1,11 @@
-import { ProductsPage } from "./productsPage"
+import { ProductsScreen } from "./productScreen"
 
-export class MyCartPage {
+export class MyCartScreen {
 
-    productsPage : ProductsPage;
+    productsScreen : ProductsScreen;
 
     constructor() {
-        this.productsPage = new ProductsPage();
+        this.productsScreen = new ProductsScreen();
     }
 
     private selectors = {
@@ -15,6 +15,7 @@ export class MyCartPage {
         noItemsLabel: '//android.widget.TextView[@text="No Items"]',
         cartIsEmptyMessage: '//android.widget.TextView[@text="Oh no! Your cart is empty. Fill it up with swag to complete your purchase."]',
         goShoppingButton: '//android.view.ViewGroup[@content-desc="Go Shopping button"]',
+        proceedToCheckoutButton: "~Proceed To Checkout button",
 
     }
 
@@ -36,6 +37,16 @@ export class MyCartPage {
 
     async getGoShoppingButton() {
         return await $(this.selectors.goShoppingButton);
+    }
+
+    async getProccedTOCheckoutButtonEle() {
+        return await $(this.selectors.proceedToCheckoutButton);
+    }
+
+    async clickProceedToCheckoutButton() {
+        const proceedToCheckoutButtonEle = await $(this.selectors.proceedToCheckoutButton);
+        await proceedToCheckoutButtonEle.waitForDisplayed();
+        await proceedToCheckoutButtonEle.click();
     }
 
 }

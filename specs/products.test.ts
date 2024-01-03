@@ -1,34 +1,35 @@
-import { CartPage } from "../pages/cartPage";
-import { LoginPage } from "../pages/loginPage";
-import { ProductsPage } from "../pages/productsPage";
 import * as assert from 'assert';
-import { MyCartPage } from "../pages/myCartPage";
-import { LogoutPage } from "../pages/logOutPage";
-
+import { LoginScreen } from "../screens/loginScreen";
+import { LogoutScreen } from "../screens/logOutScreen";
+import { ProductsScreen } from '../screens/productScreen';
+import { CartScreen } from "../screens/cartScreen";
+import { MyCartScreen } from "../screens/myCartScreen";
 
 describe('Product Price Comparison', () => {
-    let productsPage: ProductsPage;
-    let cartPage: CartPage;
-    let loginPage : LoginPage;
-    let myCartPage : MyCartPage;
-    let logoutPage : LogoutPage;
+
+    let loginScreen : LoginScreen;
+    let productsScreen : ProductsScreen;
+    let cartScreen : CartScreen;
+    let myCartScreen : MyCartScreen;
+    let logoutScreen  : LogoutScreen;
 
     before(async () => {
-        productsPage = new ProductsPage();
-        cartPage = new CartPage();
-        loginPage = new LoginPage();
-        myCartPage = new MyCartPage();
-        logoutPage = new LogoutPage();
 
-        await loginPage.login("bob@example.com", "10203040");
+        loginScreen = new LoginScreen();
+        productsScreen = new ProductsScreen();
+        cartScreen = new CartScreen();
+        myCartScreen = new MyCartScreen();
+        logoutScreen = new LogoutScreen();
+
+        await loginScreen.login("bob@example.com", "10203040");
     });
 
     it('Assert the prices from both the pages', async () => {
 
-        (await productsPage.getFleeceJacketLabel()).click();
+        (await productsScreen.getFleeceJacketLabel()).click();
 
-        const productsPagePrice = await productsPage.getFleeceJacketPriceText();
-        const cartPagePrice = await cartPage.getProductPriceLabelText();
+        const productsPagePrice = await productsScreen.getFleeceJacketPriceText();
+        const cartPagePrice = await cartScreen.getProductPriceLabelText();
 
         assert.equal(productsPagePrice, cartPagePrice, 'Product prices do not match');
 
@@ -44,19 +45,18 @@ describe('Product Price Comparison', () => {
         console.log("**********************SECOND TEST CASE START***************************");
 
 
-        (await productsPage.getFleeceJacketLabel()).click();
+        (await productsScreen.getFleeceJacketLabel()).click();
         
-        await cartPage.addToCartProduct();
+        await cartScreen.addToCartProduct();
 
-        const noItemsLabel = await (await myCartPage.getNoItemsLabel()).getText();
+        const noItemsLabel = await (await myCartScreen.getNoItemsLabel()).getText();
         expect(noItemsLabel).toBe('No Items');
 
-        const cartIsEmptyMessage = await (await myCartPage.getCartIsEmptyMessage()).getText();
+        const cartIsEmptyMessage = await (await myCartScreen.getCartIsEmptyMessage()).getText();
         expect(cartIsEmptyMessage).toBe('Oh no! Your cart is empty. Fill it up with swag to complete your purchase.');
 
-        (await myCartPage.getGoShoppingButton()).click();
+        (await myCartScreen.getGoShoppingButton()).click();
         console.log("**********************SECOND TEST CASE END***************************");
-
 
         // Terminate and Launch the driver again
         // await driver.terminateApp("com.saucelabs.mydemoapp.rn");

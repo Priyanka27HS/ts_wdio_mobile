@@ -1,14 +1,14 @@
-import { LoginPage } from "../pages/loginPage";
+import { LoginScreen } from "../screens/loginScreen";
 
-let loginPage : LoginPage;
+let loginScreen : LoginScreen;
 
 describe("Login to the application", () => {
 
     before(async () => {
-        loginPage = new LoginPage();
+        loginScreen = new LoginScreen();
     });
 
     it("should able to login with valid credentials", async () => {
-        await loginPage.login("bob@example.com", "10203040");
+        await loginScreen.login("bob@example.com", "10203040");
     });
 })

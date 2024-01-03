@@ -1,14 +1,15 @@
-import { ProductsPage } from "./productsPage"
-import { MyCartPage } from "./myCartPage";
+import { ProductsScreen } from "./productScreen"
+import { MyCartScreen } from "./myCartScreen";
+import { $ } from "@wdio/globals"
 
-export class CartPage {
+export class CartScreen {
 
-    productsPage : ProductsPage;
-    myCartPage: MyCartPage;
+    productsScreen : ProductsScreen;
+    myCartScreen: MyCartScreen;
 
     constructor() {
-        this.productsPage = new ProductsPage();
-        this.myCartPage = new MyCartPage();
+        this.productsScreen = new ProductsScreen();
+        this.myCartScreen= new MyCartScreen();
     }
 
     private selectors = {
@@ -16,10 +17,9 @@ export class CartPage {
         productPriceLabel: '~product price',
         increaseQuantity: '//android.view.ViewGroup[@content-desc="counter plus button"]/android.widget.ImageView',
         decreaseQuantity: '//android.view.ViewGroup[@content-desc="counter minus button"]/android.widget.ImageView',
-        // noOfQuantity: '',
-        addToCartButton: '//android.widget.TextView[@text="Add To Cart"]',
+        addToCartButton: '~Add To Cart button',
         productsHighlightsLabel: '//android.widget.TextView[@text="Product Highlights"]',
-        cartIcon: '//android.view.ViewGroup[@content-desc="cart badge"]/android.widget.ImageView',
+        cartBadge: '~cart badge',
 
     }
 
@@ -44,7 +44,14 @@ export class CartPage {
     }
 
     async getCartIcon() {
-        return await $(this.selectors.cartIcon);
+        const cartIconEle = $(this.selectors.cartBadge);
+        await cartIconEle.click();
+    }
+
+    async addToCart() {
+        const addToCartButton = await this.getAddToCartButton();
+        await addToCartButton.waitForDisplayed();
+        await addToCartButton.click();
     }
 
     
@@ -56,7 +63,7 @@ export class CartPage {
 
     async addToCartProduct() {
         
-        const fleeceJacketLabelElement = await this.productsPage.getFleeceJacketLabel();
+        const fleeceJacketLabelElement = await this.productsScreen.getFleeceJacketLabel();
         await fleeceJacketLabelElement.waitForDisplayed();
 
         for (let i = 0; i < 3; i++) {
@@ -64,13 +71,10 @@ export class CartPage {
         }
 
         (await this.getAddToCartButton()).click();
-        (await this.getCartIcon()).click();
+        await this.getCartIcon();
 
-        const removeProduct = await this.myCartPage.getRemoveItem();
+        const removeProduct = await this.myCartScreen.getRemoveItem();
         await removeProduct.waitForDisplayed();
         await removeProduct.click();
     }
-
-
-
 }

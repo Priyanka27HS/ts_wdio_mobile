@@ -1,15 +1,15 @@
-import { ProductsPage } from "./productsPage"
-import { LeftScreenMenuPage } from "./leftScreenMenuPage";
+import { ProductsScreen } from "./productScreen"
+import { LeftScreenMenu } from "./leftScreenMenu"
 
 
-export class LoginPage {
+export class LoginScreen {
 
-    productsPage : ProductsPage;
-    leftScreenMenuPage: LeftScreenMenuPage;
+    productsScreen : ProductsScreen;
+    leftScreenMenu: LeftScreenMenu;
 
     constructor() {
-        this.productsPage = new ProductsPage();
-        this.leftScreenMenuPage = new LeftScreenMenuPage();
+        this.productsScreen = new ProductsScreen();
+        this.leftScreenMenu = new LeftScreenMenu();
     }
 
     private selectors = {
@@ -32,8 +32,8 @@ export class LoginPage {
 
     public async login(username : string, password : string) {
 
-        await (await this.productsPage.getHamburgerIconEle()).click();
-        const menuItemLoginEle = await this.leftScreenMenuPage.getLoginButtonFromSideMenu();
+        await (await this.productsScreen.getHamburgerIconEle()).click();
+        const menuItemLoginEle = await this.leftScreenMenu.getLoginButtonFromSideMenu();
         await menuItemLoginEle.waitForDisplayed();
         await menuItemLoginEle.click();
         const userNameInputFieldEle = await $(this.selectors.userNameInputField);

@@ -1,4 +1,6 @@
-export class ProductsPage {
+import { $ } from "@wdio/globals";
+
+export class ProductsScreen {
 
     private selectors = {
 
@@ -6,6 +8,8 @@ export class ProductsPage {
         productTextOnHomeScreen: "//android.widget.TextView[@text='Products']",
         fleeceJacketLabel: '//android.widget.TextView[@text="Sauce Labs Fleece Jacket"]',
         fleeceJacketPrice: '//android.widget.TextView[@text="$49.99"]',
+        sauceLabsBackPackProduct: "(//android.widget.TextView[@content-desc='store item text'])[1]",
+        firstItem: "(//android.view.ViewGroup[@content-desc='store item'])[1]/android.view.ViewGroup[1]/android.widget.ImageView",
 
     }
 
@@ -25,14 +29,20 @@ export class ProductsPage {
         return await $(this.selectors.fleeceJacketPrice);
     }
 
-
-
-
     async getFleeceJacketPriceText() {
         const fleeceJacketPriceElement = await $(this.selectors.fleeceJacketPrice);
         await (await this.getFleeceJacketPrice()).waitForDisplayed();
         return await fleeceJacketPriceElement.getText();
+    }
 
+    public async getSauceLabsBackPackProductEle() {
+        return await $(this.selectors.sauceLabsBackPackProduct);
+    }
+
+    async clickOnProduct() {
+        const productElement = await this.getSauceLabsBackPackProductEle();
+        await productElement.waitForDisplayed();
+        await productElement.click();
     }
 
 }

@@ -1,20 +1,19 @@
-import { LoginPage } from "../pages/loginPage";
-import { LogoutPage } from "../pages/logOutPage";
+import { LoginScreen } from "../screens/loginScreen";
+import { LogoutScreen } from "../screens/logOutScreen";
 
-let loginPage : LoginPage;
-let logoutPage : LogoutPage;
+let loginScreen : LoginScreen;
+let logoutScreen  : LogoutScreen;
 
 
 before(() => {
-    loginPage = new LoginPage();
-    logoutPage = new LogoutPage();
-
+    loginScreen = new LoginScreen();
+    logoutScreen = new LogoutScreen();
 });
 
 
 describe("Logout to the application", () => {
     it("should able to login and logout", async () => {
-        await loginPage.login("bob@example.com", "10203040");
-        await logoutPage.logout();
+        await loginScreen.login("bob@example.com", "10203040");
+        await logoutScreen.logout();
     });
 })
