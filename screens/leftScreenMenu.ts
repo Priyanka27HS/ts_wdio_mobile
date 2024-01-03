@@ -1,6 +1,6 @@
 import { $ } from '@wdio/globals'
 
-export class LeftScreenMenuPage {
+export class LeftScreenMenu {
 
     private selectors = {
 

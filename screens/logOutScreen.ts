@@ -1,16 +1,16 @@
 import { $ } from "@wdio/globals"
-import { HomePage } from "./homePage";
-import { LeftScreenMenuPage } from "./leftScreenMenuPage";
+import { LeftScreenMenu } from "./leftScreenMenu";
+import { ProductsScreen } from "./productScreen"
 
 
-export class LogoutPage {
+export class LogoutScreen {
 
-    homePage : HomePage;
-    leftScreenMenuPage: LeftScreenMenuPage;
+    productsScreen : ProductsScreen;
+    leftScreenMenu: LeftScreenMenu;
 
     constructor() {
-        this.homePage = new HomePage();
-        this.leftScreenMenuPage = new LeftScreenMenuPage();
+        this.productsScreen = new ProductsScreen();
+        this.leftScreenMenu = new LeftScreenMenu();
     }
 
     private locators = {
@@ -36,14 +36,14 @@ export class LogoutPage {
 
     public async logout() : Promise<void> {
 
-        (await this.homePage.getHamburgerIconEle()).click();
-        (await this.leftScreenMenuPage.getLogOutButton()).click();
+        (await this.productsScreen.getHamburgerIconEle()).click();
+        (await this.leftScreenMenu.getLogOutButton()).click();
         await (await this.getLogOutButtonEle()).waitForDisplayed();
         await (await this.getLogOutButtonEle()).click();
         (await this.getLogOutSucessMsgEle()).waitForDisplayed();
         await (await this.getLogOutOkButtonEle()).waitForDisplayed();
         await (await this.getLogOutOkButtonEle()).click();
-        (await this.homePage.getProductTextOnHomeScreenEle()).waitForDisplayed();
+        (await this.productsScreen.getProductTextOnHomeScreenEle()).waitForDisplayed();
 
     }
 

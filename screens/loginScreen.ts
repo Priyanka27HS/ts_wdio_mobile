@@ -1,15 +1,15 @@
-import { HomePage } from "./homePage";
-import { LeftScreenMenuPage } from "./leftScreenMenuPage";
+import { ProductsScreen } from "./productScreen"
+import { LeftScreenMenu } from "./leftScreenMenu"
 
 
-export class LoginPage {
+export class LoginScreen {
 
-    homePage : HomePage;
-    leftScreenMenuPage: LeftScreenMenuPage;
+    productsScreen : ProductsScreen;
+    leftScreenMenu: LeftScreenMenu;
 
     constructor() {
-        this.homePage = new HomePage();
-        this.leftScreenMenuPage = new LeftScreenMenuPage();
+        this.productsScreen = new ProductsScreen();
+        this.leftScreenMenu = new LeftScreenMenu();
     }
 
     private selectors = {
@@ -32,8 +32,8 @@ export class LoginPage {
 
     public async login(username : string, password : string) {
 
-        await (await this.homePage.getHamburgerIconEle()).click();
-        const menuItemLoginEle = await this.leftScreenMenuPage.getLoginButtonFromSideMenu();
+        await (await this.productsScreen.getHamburgerIconEle()).click();
+        const menuItemLoginEle = await this.leftScreenMenu.getLoginButtonFromSideMenu();
         await menuItemLoginEle.waitForDisplayed();
         await menuItemLoginEle.click();
         const userNameInputFieldEle = await $(this.selectors.userNameInputField);
@@ -46,11 +46,4 @@ export class LoginPage {
         await loginButtonEle.click();
 
     }
-
 }
-
-        // usernameInputField: "~Username input field",
-        // passwordInputField: "~Password input field",
-        // loginButton: "~Login button",
-        // firstProductEle: '(//android.widget.TextView[@content-desc="store item text"])[1]',
-        // errorMessage: '//android.view.ViewGroup[@content-desc="generic-error-message"]/android.widget.TextView',
