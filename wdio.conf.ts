@@ -70,7 +70,8 @@ export const config: Options.Testrunner = {
             "appium:deviceName": "Pixel_6_API_32",
             "appium:app": join(process.cwd(), '/apk/android/Sauce_labs.apk'),
             "appium:automationName": "UiAutomator2",
-            "appium:udid": "emulator-5554"
+            "appium:udid": "emulator-5554",
+            "appium:chromedriverExecutable": `${process.cwd()}/chromedriver-mobile/chromedriver`
     }],
 
     //
