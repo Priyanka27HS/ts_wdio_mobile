@@ -1,6 +1,11 @@
 import { $ } from "@wdio/globals";
+import { BaseActions } from "../commonFunctions/baseActions";
+
+let baseActions: BaseActions;
 
 export class ProductsScreen {
+
+    baseActions = new BaseActions();
 
     private selectors = {
 
@@ -48,6 +53,22 @@ export class ProductsScreen {
 
     async getFooterLabel() {
         return await $(this.selectors.footerLabel);
+    }
+
+    async getFirstItemEle() {
+        return await $(this.selectors.firstItem);
+    }
+
+    async pressHoldFirstItem() {
+        await browser.pause(5000);
+        const firstItemEle = await $(this.selectors.firstItem)
+        await this.baseActions.pressAndHold(firstItemEle, 5000);
+    }
+
+    async PressHoldOffsetFirstItem() {
+        await browser.pause(5000);
+        const firstItemEle = await $(this.selectors.firstItem);
+        await this.baseActions.pressAndHoldAtOffset(firstItemEle, 100, 100, 10000);
     }
 
 }
