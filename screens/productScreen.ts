@@ -1,5 +1,5 @@
 import { $ } from "@wdio/globals";
-import { BaseActions } from "../commonFunctions/baseActions";
+import { BaseActions } from "../utilities/baseActions";
 
 let baseActions: BaseActions;
 
@@ -57,18 +57,6 @@ export class ProductsScreen {
 
     async getFirstItemEle() {
         return await $(this.selectors.firstItem);
-    }
-
-    async pressHoldFirstItem() {
-        await browser.pause(5000);
-        const firstItemEle = await $(this.selectors.firstItem)
-        await this.baseActions.pressAndHold(firstItemEle, 5000);
-    }
-
-    async PressHoldOffsetFirstItem() {
-        await browser.pause(5000);
-        const firstItemEle = await $(this.selectors.firstItem);
-        await this.baseActions.pressAndHoldAtOffset(firstItemEle, 100, 100, 10000);
     }
 
 }

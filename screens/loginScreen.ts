@@ -1,5 +1,6 @@
 import { ProductsScreen } from "./productScreen"
 import { LeftScreenMenu } from "./leftScreenMenu"
+import { BaseActions } from "../utilities/baseActions";
 
 
 export class LoginScreen {
@@ -39,7 +40,12 @@ export class LoginScreen {
         const userNameInputFieldEle = await $(this.selectors.userNameInputField);
         await userNameInputFieldEle.waitForDisplayed();
         await userNameInputFieldEle.setValue(username);
+        
         const passwordInputFieldEle = await $(this.selectors.passwordInputField);
+        await passwordInputFieldEle.click();
+        
+        BaseActions.swipeUpFromMiddle();
+
         await passwordInputFieldEle.waitForDisplayed();
         await passwordInputFieldEle.setValue(password);
         const loginButtonEle = await $(this.selectors.loginButton);

@@ -1,4 +1,4 @@
-import { BaseActions } from "../../commonFunctions/baseActions";
+import { BaseActions } from "../../utilities/baseActions.ts";
 import { ProductsScreen } from "../../screens/productScreen";
 
 let productsScreen: ProductsScreen;
@@ -21,29 +21,23 @@ describe("***** Swipe Gestures *****", () => {
 
     it('Scroll until an element is visible on a mobile app', async () => {
         const footerEle = await productsScreen.getFooterLabel();
-        await baseActions.swipe(footerEle);
+        await BaseActions.swipeUpFromMiddle();
     })
-
 
     it('Perform a vertical swipe (scroll down) on a mobile app', async () => {
         await driver.pause(2000);
-
+    
         const startX = 500;
         const startY = 800;
         const endY = 200;
-
-        await driver.touchAction([
-            { action: 'press', x: startX, y: startY },
-            { action: 'wait', ms: 500 },
-            { action: 'moveTo', x: startX, y: endY },
-            { action: 'release' }
-        ]);
+    
+        await BaseActions.swipe(startX, startY, endY);
     });
-
+    
 
     it('Scroll until an element is visible on a mobile app (Swipe Gestures Based on Screen Percentages)', async () => {
         await (await productsScreen.getFirstItemEle()).waitForDisplayed();
-        await baseActions.swipeByPercentage(await productsScreen.getFooterLabel(), 30, 70);
+        await BaseActions.swipeByPercentage(await productsScreen.getFooterLabel(), 30, 70);
     });
 
 })
