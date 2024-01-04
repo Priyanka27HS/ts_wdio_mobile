@@ -1,10 +1,10 @@
-import { LoginScreen } from "../screens/loginScreen";
-import { ProductsScreen } from "../screens/productScreen";
-import { CartScreen } from "../screens/cartScreen";
-import { MyCartScreen } from "../screens/myCartScreen";
-import { CheckOutScreen } from "../screens/checkOutScreen";
-import { ShippingAddressUi } from "../resources/shippingAddressUi.ts";
-import { CardDetails } from "../resources/cardDetailsUi.ts"
+import { LoginScreen } from "../../screens/loginScreen.ts";
+import { ProductsScreen } from "../../screens/productScreen.ts";
+import { CartScreen } from "../../screens/cartScreen.ts";
+import { MyCartScreen } from "../../screens/myCartScreen.ts";
+import { CheckOutScreen } from "../../screens/checkOutScreen.ts";
+import { ShippingAddressUi } from "../../resources/shippingAddressUi.ts";
+import { CardDetails } from "../../resources/cardDetailsUi.ts"
 
 
 let loginScreen : LoginScreen;
@@ -13,7 +13,7 @@ let checkOutScreen : CheckOutScreen;
 let cartScreen : CartScreen;
 let myCartScreen : MyCartScreen;
 
-describe('Add item to cart', () => {
+describe('Add Products to the cart', () => {
 
     before(async () => {
         loginScreen = new LoginScreen();
@@ -23,7 +23,7 @@ describe('Add item to cart', () => {
         checkOutScreen = new CheckOutScreen();
     });
 
-    it('Add first item to cart', async () => {
+    it('Add first item to the cart', async () => {
 
         const username: string = 'bob@example.com';
         const password: string = '10203040';

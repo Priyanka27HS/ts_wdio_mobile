@@ -1,9 +1,9 @@
 import * as assert from 'assert';
-import { LoginScreen } from "../screens/loginScreen";
-import { LogoutScreen } from "../screens/logOutScreen";
-import { ProductsScreen } from '../screens/productScreen';
-import { CartScreen } from "../screens/cartScreen";
-import { MyCartScreen } from "../screens/myCartScreen";
+import { LoginScreen } from "../../screens/loginScreen";
+import { LogoutScreen } from "../../screens/logOutScreen";
+import { ProductsScreen } from '../../screens/productScreen';
+import { CartScreen } from "../../screens/cartScreen";
+import { MyCartScreen } from "../../screens/myCartScreen";
 
 describe('Product Price Comparison', () => {
 
@@ -32,17 +32,11 @@ describe('Product Price Comparison', () => {
         const cartPagePrice = await cartScreen.getProductPriceLabelText();
 
         assert.equal(productsPagePrice, cartPagePrice, 'Product prices do not match');
-
-        console.log("*****************FIRST TEST CASE******************");
     });
 
     it('Add products to the cart and remove item', async () => {
 
-        console.log("**********************SECOND TEST CASE START***************************");
-
-
         (await productsScreen.getFleeceJacketLabel()).click();
-        
         await cartScreen.addToCartProduct();
 
         const noItemsLabel = await (await myCartScreen.getNoItemsLabel()).getText();
@@ -52,6 +46,5 @@ describe('Product Price Comparison', () => {
         expect(cartIsEmptyMessage).toBe('Oh no! Your cart is empty. Fill it up with swag to complete your purchase.');
 
         (await myCartScreen.getGoShoppingButton()).click();
-        console.log("**********************SECOND TEST CASE END***************************");
     });
 })
