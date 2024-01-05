@@ -5,13 +5,15 @@ import { MyCartScreen } from "../../screens/myCartScreen.ts";
 import { CheckOutScreen } from "../../screens/checkOutScreen.ts";
 import { ShippingAddressUi } from "../../resources/shippingAddressUi.ts";
 import { CardDetails } from "../../resources/cardDetailsUi.ts"
-
+import { AppTerminationUtil } from "../../utilities/appTerminationUtil.ts";
 
 let loginScreen : LoginScreen;
 let productsScreen : ProductsScreen;
 let checkOutScreen : CheckOutScreen;
 let cartScreen : CartScreen;
 let myCartScreen : MyCartScreen;
+
+const appTerminationUtil = new AppTerminationUtil;
 
 describe('Add Products to the cart', () => {
 
@@ -22,6 +24,11 @@ describe('Add Products to the cart', () => {
         myCartScreen = new MyCartScreen();
         checkOutScreen = new CheckOutScreen();
     });
+
+    afterEach(async () => {
+        await appTerminationUtil.terminateApp();
+    });
+    
 
     it('Add first item to the cart', async () => {
 
@@ -56,6 +63,5 @@ describe('Add Products to the cart', () => {
         await checkOutScreen.clickReviewOrderButton();
         await checkOutScreen.clickPlaceOrderButton();
         await checkOutScreen.clickContinueShoppingButton();
-
     });
 });
