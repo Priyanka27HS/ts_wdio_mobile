@@ -4,9 +4,9 @@ import { LogoutScreen } from "../../screens/logOutScreen";
 import { ProductsScreen } from '../../screens/productScreen';
 import { CartScreen } from "../../screens/cartScreen";
 import { MyCartScreen } from "../../screens/myCartScreen";
-import { AppTerminationUtil } from "../../utilities/appTerminationUtil.ts";
+import { AppActionsUtil } from "../../utilities/appActionsUtil.ts";
 
-const appTerminationUtil = new AppTerminationUtil;
+const appActionsUtil = new AppActionsUtil;
 
 describe('Product Price Comparison', () => {
 
@@ -28,7 +28,7 @@ describe('Product Price Comparison', () => {
     });
 
     afterEach(async () => {
-        await appTerminationUtil.terminateApp();
+        await appActionsUtil.appActions();
     });
 
     it('Assert the prices from both the pages', async () => {

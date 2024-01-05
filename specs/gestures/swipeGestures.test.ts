@@ -1,12 +1,12 @@
 import { BaseActions } from "../../utilities/baseActions.ts";
 import { ProductsScreen } from "../../screens/productScreen";
-import { AppTerminationUtil } from "../../utilities/appTerminationUtil.ts";
+import { AppActionsUtil } from "../../utilities/appActionsUtil.ts";
 
 
 let productsScreen: ProductsScreen;
 let baseActions: BaseActions;
 
-const appTerminationUtil = new AppTerminationUtil;
+const appActionsUtil = new AppActionsUtil;
 
 
 describe("***** Swipe Gestures *****", () => {
@@ -17,7 +17,7 @@ describe("***** Swipe Gestures *****", () => {
     });
 
     afterEach(async () => {
-        await appTerminationUtil.terminateApp();
+        await appActionsUtil.appActions();
     });
 
 
