@@ -4,6 +4,9 @@ import { LogoutScreen } from "../../screens/logOutScreen";
 import { ProductsScreen } from '../../screens/productScreen';
 import { CartScreen } from "../../screens/cartScreen";
 import { MyCartScreen } from "../../screens/myCartScreen";
+import { AppTerminationUtil } from "../../utilities/appTerminationUtil.ts";
+
+const appTerminationUtil = new AppTerminationUtil;
 
 describe('Product Price Comparison', () => {
 
@@ -22,6 +25,10 @@ describe('Product Price Comparison', () => {
         logoutScreen = new LogoutScreen();
 
         await loginScreen.login("bob@example.com", "10203040");
+    });
+
+    afterEach(async () => {
+        await appTerminationUtil.terminateApp();
     });
 
     it('Assert the prices from both the pages', async () => {
