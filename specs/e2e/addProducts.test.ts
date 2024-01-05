@@ -5,7 +5,7 @@ import { MyCartScreen } from "../../screens/myCartScreen.ts";
 import { CheckOutScreen } from "../../screens/checkOutScreen.ts";
 import { ShippingAddressUi } from "../../resources/shippingAddressUi.ts";
 import { CardDetails } from "../../resources/cardDetailsUi.ts"
-import { AppTerminationUtil } from "../../utilities/appTerminationUtil.ts";
+import { AppActionsUtil } from "../../utilities/appActionsUtil.ts";
 
 let loginScreen : LoginScreen;
 let productsScreen : ProductsScreen;
@@ -13,7 +13,7 @@ let checkOutScreen : CheckOutScreen;
 let cartScreen : CartScreen;
 let myCartScreen : MyCartScreen;
 
-const appTerminationUtil = new AppTerminationUtil;
+const appActionsUtil = new AppActionsUtil;
 
 describe('Add Products to the cart', () => {
 
@@ -26,7 +26,7 @@ describe('Add Products to the cart', () => {
     });
 
     afterEach(async () => {
-        await appTerminationUtil.terminateApp();
+        await appActionsUtil.appActions();
     });
     
 

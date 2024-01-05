@@ -2,7 +2,7 @@ import { LeftScreenMenu } from "../../screens/leftScreenMenu.ts";
 import { LoginScreen } from "../../screens/loginScreen";
 import { ProductsScreen } from "../../screens/productScreen.ts";
 import { WebViewScreen } from "../../screens/webViewScreen.ts";
-import { AppTerminationUtil } from "../../utilities/appTerminationUtil.ts";
+import { AppActionsUtil } from "../../utilities/appActionsUtil.ts";
 import { SwitchContextUtil } from "../../utilities/switchContextUtil.ts";
 
 let loginScreen : LoginScreen;
@@ -11,7 +11,7 @@ let leftScreenMenu : LeftScreenMenu;
 let webViewScreen : WebViewScreen;
 let switchContextUtil : SwitchContextUtil;
 
-const appTerminationUtil = new AppTerminationUtil;
+const appActionsUtil = new AppActionsUtil;
 
 describe('***** Switch between Web view and Native view in a Mobile App *****', async () => {
 
@@ -24,7 +24,7 @@ describe('***** Switch between Web view and Native view in a Mobile App *****', 
     });
 
     afterEach(async () => {
-        await appTerminationUtil.terminateApp();
+        await appActionsUtil.appActions();
     });
 
     it('Switching between Native to Web views', async () => {

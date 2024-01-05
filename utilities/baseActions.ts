@@ -1,5 +1,5 @@
 import { SwipeCordinates } from "../resources/swipeCOrdinates";
-
+import { $ } from "@wdio/globals"
 export class BaseActions {
 
     private static readonly SWIPE_PERCENTAGES = {
