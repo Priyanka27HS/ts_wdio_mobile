@@ -52,6 +52,7 @@ export class ProductsScreen {
     }
 
     async getFooterLabel() {
+        await driver.pause(3000);
         return await $(this.selectors.footerLabel);
     }
 

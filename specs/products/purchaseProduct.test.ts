@@ -6,9 +6,12 @@ import { CartScreen } from "../../screens/cartScreen";
 import { MyCartScreen } from "../../screens/myCartScreen";
 import { AppActionsUtil } from "../../utilities/appActionsUtil.ts";
 import { LOGGER, LoggerHelper } from '../../reporting/loggerHelper.ts';
+import { LoginDetails } from "../../resources/customTypes/loginDetails";
+import * as loginDetailsJson from "../../resources/testdata/loginDetails.json"
 
 const appActionsUtil = new AppActionsUtil;
 const specName: string = 'Purchasing a product';
+let loginDetails: LoginDetails;
 
 describe('Product Price Comparison', () => {
 
@@ -25,8 +28,7 @@ describe('Product Price Comparison', () => {
         cartScreen = new CartScreen();
         myCartScreen = new MyCartScreen();
         logoutScreen = new LogoutScreen();
-
-        await loginScreen.login("bob@example.com", "10203040");
+        loginDetails = loginDetailsJson as LoginDetails;
         LoggerHelper.setupLogger(specName);
     });
 
