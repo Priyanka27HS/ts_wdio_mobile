@@ -1,6 +1,6 @@
 import { $ } from "@wdio/globals";
-import { ShippingAddressUi } from "../resources/shippingAddressUi.ts";
-import { CardDetails } from "../resources/cardDetailsUi.ts"
+import { ShippingAddressUi } from "../resources/customTypes/shippingAddressUi.ts";
+import { CardDetails } from "../resources/customTypes/cardDetailsUi.ts"
 
 export class CheckOutScreen {
 

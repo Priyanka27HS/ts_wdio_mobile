@@ -7,5 +7,4 @@ export interface ShippingAddressUi {
     state: string,
     zipCode: number,
     country: string,
-
 }
