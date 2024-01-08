@@ -10,16 +10,18 @@ import { LOGGER, LoggerHelper } from "../../reporting/loggerHelper.ts";
 import * as shippingAddressDetailsJson from "../../resources/testdata/shippingAddressDetails.json"
 import * as cardDetailsJson from "../../resources/testdata/cardDetails.json"
 import { FileUtils } from "../../utilities/fileUtil.ts";
+import { LoginDetails } from "../../resources/customTypes/loginDetails";
+import * as loginDetailsJson from "../../resources/testdata/loginDetails.json"
 
 let loginScreen : LoginScreen;
 let productsScreen : ProductsScreen;
 let checkOutScreen : CheckOutScreen;
 let cartScreen : CartScreen;
 let myCartScreen : MyCartScreen;
+let loginDetails: LoginDetails;
 
 const appActionsUtil = new AppActionsUtil;
 const specName: string = 'E2E test scenario';
-
 
 describe('Add Products to the cart', () => {
 
@@ -30,6 +32,7 @@ describe('Add Products to the cart', () => {
         myCartScreen = new MyCartScreen();
         checkOutScreen = new CheckOutScreen();
         LoggerHelper.setupLogger(specName);
+        loginDetails = loginDetailsJson as LoginDetails;
     });
 
     afterEach(async () => {
@@ -39,13 +42,11 @@ describe('Add Products to the cart', () => {
 
     it('Add first item to the cart', async () => {
 
-        const username: string = 'bob@example.com';
-        const password: string = '10203040';
-
+        const loginDetails: LoginDetails = FileUtils.convertJsonToCustomType(loginDetailsJson);
         const shippingAddressDetails: ShippingAddressUi = FileUtils.convertJsonToCustomType(shippingAddressDetailsJson);
         const cardDetails: CardDetails = FileUtils.convertJsonToCustomType(cardDetailsJson);
 
-        await loginScreen.login(username, password);
+        await loginScreen.login(loginDetails.username, loginDetails.password);
         LOGGER.info('***** Adding products to the cart *****');
         await productsScreen.clickOnProduct();
         await cartScreen.addToCart();

@@ -3,7 +3,6 @@ import { ProductsScreen } from "../../screens/productScreen";
 import { AppActionsUtil } from "../../utilities/appActionsUtil.ts";
 import { LOGGER, LoggerHelper } from "../../reporting/loggerHelper.ts";
 
-
 let productsScreen: ProductsScreen;
 let baseActions: BaseActions;
 
@@ -30,7 +29,7 @@ describe("***** Performing Swipe Gestures *****", () => {
     })
 
     it('Perform a vertical swipe (scroll down) on a mobile app', async () => {
-        await driver.pause(2000);
+        await driver.pause(5000);
     
         const startX = 500;
         const startY = 800;
@@ -43,6 +42,7 @@ describe("***** Performing Swipe Gestures *****", () => {
 
     it('Scroll until an element is visible on a mobile app -> Swipe Gestures Based on Screen Percentages', async () => {
         await (await productsScreen.getFirstItemEle()).waitForDisplayed();
+        await driver.pause(3000);
         await BaseActions.swipeByPercentage(await productsScreen.getFooterLabel(), 30, 70);
         LOGGER.info('***** Swipe by percentage is done *****');
     });

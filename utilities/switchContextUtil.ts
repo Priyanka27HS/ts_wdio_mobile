@@ -1,3 +1,5 @@
+import { $ } from "@wdio/globals"
+
 export class SwitchContextUtil {
     async switchContext(contextName: string, timeout?: number): Promise<void> {
         const actualTimeout = timeout ?? 60000;
