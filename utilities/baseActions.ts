@@ -1,5 +1,8 @@
-import { SwipeCordinates } from "../resources/swipeCOrdinates";
+import { SwipeCordinates } from "../resources/customTypes/swipeCordinates"
 import { $ } from "@wdio/globals"
+import { LOGGER } from "../reporting/loggerHelper";
+import { loggers } from "winston";
+
 export class BaseActions {
 
     private static readonly SWIPE_PERCENTAGES = {
@@ -21,6 +24,9 @@ export class BaseActions {
     }
   
     private static async performSwipe(swipeCordinates: SwipeCordinates): Promise<void> {
+
+        LOGGER.info('*** Performing SWIPE actions ***');
+
         await browser
             .action('pointer', { parameters: { 'pointerType': 'touch' } })
             .move({ x: swipeCordinates.startX, y: swipeCordinates.startY })
@@ -30,8 +36,10 @@ export class BaseActions {
             .up()
             .perform();
     }
+    
 
     public static async swipe(startX: number, startY: number, endY: number): Promise<void> {
+        LOGGER.info('*** Performing SWIPE actions ***');
         const swipeCordinates = { startX, startY, endY };
         await BaseActions.performSwipe(swipeCordinates);
     }

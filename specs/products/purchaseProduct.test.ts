@@ -5,8 +5,10 @@ import { ProductsScreen } from '../../screens/productScreen';
 import { CartScreen } from "../../screens/cartScreen";
 import { MyCartScreen } from "../../screens/myCartScreen";
 import { AppActionsUtil } from "../../utilities/appActionsUtil.ts";
+import { LOGGER, LoggerHelper } from '../../reporting/loggerHelper.ts';
 
 const appActionsUtil = new AppActionsUtil;
+const specName: string = 'Purchasing a product';
 
 describe('Product Price Comparison', () => {
 
@@ -25,6 +27,7 @@ describe('Product Price Comparison', () => {
         logoutScreen = new LogoutScreen();
 
         await loginScreen.login("bob@example.com", "10203040");
+        LoggerHelper.setupLogger(specName);
     });
 
     afterEach(async () => {
@@ -39,6 +42,7 @@ describe('Product Price Comparison', () => {
         const cartPagePrice = await cartScreen.getProductPriceLabelText();
 
         assert.equal(productsPagePrice, cartPagePrice, 'Product prices do not match');
+        LOGGER.info('***** Product prices are compared *****');
     });
 
     it('Add products to the cart and remove item', async () => {
@@ -53,5 +57,6 @@ describe('Product Price Comparison', () => {
         expect(cartIsEmptyMessage).toBe('Oh no! Your cart is empty. Fill it up with swag to complete your purchase.');
 
         (await myCartScreen.getGoShoppingButton()).click();
+        LOGGER.info('***** Item is removed from the cart *****');
     });
 })
