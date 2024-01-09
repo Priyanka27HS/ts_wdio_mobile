@@ -2,10 +2,13 @@
 
 # Ignore WebDriverIO log files
 logs/
+local.log
+*.log
 
 # Ignore node_modules directory
 node_modules/
 dist/
+package-lock.json
 
 # Ignore the output of WebdriverIO test runs
 wdio-*.log
@@ -47,3 +50,4 @@ secrets.js
 
 # app
 app/
+
