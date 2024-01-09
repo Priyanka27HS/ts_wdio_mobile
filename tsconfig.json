@@ -19,14 +19,10 @@
         "allowImportingTsExtensions": true,
         "resolveJsonModule": true,
         "isolatedModules": true,
-        "strict": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
+        "strict": false,
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
         "noFallthroughCasesInSwitch": true,
         "esModuleInterop": true   
-    },
-    "include": [
-        "src",
-        "wdio.conf.ts"
-, "src/pages"    ]
+    }
 }
