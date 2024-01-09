@@ -1,9 +1,7 @@
 name: CI
-
 on:
   pull_request:
-    branches: 
-      -main
+    branches: -main
   workflow_dispatch:
 
 jobs:
@@ -11,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout Repository
         uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
@@ -19,18 +17,14 @@ jobs:
 
       - name: Install Dependencies
         run: npm install
-        
+
       - name: Run Tests
         env:
-          BROWSERSTACK_USERNAME: ${{ secrets.BS_USER }}
-          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BS_KEY }}
-        # run: npm run test:local
+        BROWSERSTACK_USERNAME: ${{secrets.BROWSERSTACK_USERNAME}}
+        BROWSERSTACK_ACCESS_KEY: ${{secrets.BROWSERSTACK_ACCESS_KEY}}
         run: npm run test-browserstack
-        # npx wdio config/wdio.android.bs.conf.ts --spec specs/products/purchaseProduct.test.ts
-
       - uses: actions/upload-artifact@v1
         if: failure()
         with:
           name: logs
           path: logs
- 
