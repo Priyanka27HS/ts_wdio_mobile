@@ -1,5 +1,10 @@
 name: CI
-on: [push, pull_request]
+# on: [push, pull_request]
+on:
+  pull_request:
+  branches: -main
+  workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -9,14 +14,15 @@ jobs:
         - uses: actions/setup-node@v3
           with:
             node-version: 18.12.1
-        - name: Install
+        - name: Install Dependencies
           run: npm install
-        - name: Test
+        - name: Run Tests
           env:
            BROWSERSTACK_USERNAME: ${{ secrets.BS_USER }}
            BROWSERSTACK_ACCESS_KEY: ${{ secrets.BS_KEY }}
           # run: npm run test:local
-          run: npx wdio config/wdio.android.bs.conf.ts --spec specs/products/purchaseProduct.test.ts
+          run: npm run test-browserstack
+          # npx wdio config/wdio.android.bs.conf.ts --spec specs/products/purchaseProduct.test.ts
         - uses: actions/upload-artifact@v1
           if: failure()
           with:
