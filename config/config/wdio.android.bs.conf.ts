@@ -29,6 +29,18 @@ exports.config = {
         networkLogs: true
       }
     },
+    reporters: [
+      "spec",
+      [
+          "allure",
+          {
+              outputDir: "allure-results",
+              disableWebdriverStepsReporting: true,
+              disableWebdriverScreenshotsReporting: false,
+              disableMochaHooks: true
+          },
+      ],
+  ],
     maxInstances: 3,
     specs: [
       '/Users/testvagrant/Documents/ts_wdio/specs/gestures/swipeGestures.test.ts'

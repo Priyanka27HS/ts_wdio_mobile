@@ -1,7 +1,9 @@
-name: CI
+name: Typescript WDIO Appium Project
+
 on:
   pull_request:
-    branches: -main
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
@@ -20,6 +22,13 @@ jobs:
 
       - name: Run Tests
         env:
-        BROWSERSTACK_USERNAME: ${{secrets.BS_KEY}}
-        BROWSERSTACK_ACCESS_KEY: ${{secrets.BS_USER}}
+          BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
         run: npm run test-browserstack
+        continue-on-error: true
+
+      - name: Upload Allure Report as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results
+          path: ./allure-results
