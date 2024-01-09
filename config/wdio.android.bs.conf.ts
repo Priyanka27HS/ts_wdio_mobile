@@ -5,7 +5,7 @@ exports.config = {
   key: process.env.BROWSERSTACK_ACCESS_KEY || 'qTpfkmcJsugKDHyShJ5t',
   hostname: 'hub.browserstack.com',
   maxInstances: 1,
-  specs: ['/Users/testvagrant/Documents/ts_wdio/specs/gestures/swipeGestures.test.ts'],
+  specs: ['/Users/testvagrant/Documents/ts_wdio/specs/products/purchaseProduct.test.ts'],
   coloredLogs: true,
   logLevel: "info",
   waitforTimeout: 50000,
