@@ -14,21 +14,22 @@ This project is a Mobile Automation framework using TypeScript and WebdriverIO w
 
 # Pre-requisites 
 
-Before you begin with the Mobile Automation using TypeScript, WebdriverIO and Appium ensure you have the following pre-requisites installed on your local system.
+Before you begin with the Mobile Automation using TypeScript, WebdriverIO, and Appium ensure you have the following prerequisites installed on your local system.
 
    * NodeJs
    * Java
    * Visual Studio Code (VS Code)
    * Appium
    * Android Studio
-   * adb (Android Debug Bridge) -> Android SDK
-   * Browserstack account for Browserstack App automation.
-   * The framework is set up on your system. 
+   * Install Android SDK Platform Tools -> brew install --cask android-platform-tools
+   * Open Terminal and type 'adb' to ensure that the Android Debug Bridge is recognized.
+   * Browserstack account for BrowserStack App automation.
+   * The framework is set up on your system.
 
 # Getting started with APP Automation
 
    * Clone the repository to your local machine.
-   * Add the 'apk' to the app directory.
+   * Add the Android 'app' to the apk directory.
    * Change the 'wdio.conf.ts' file in the 'config' directory for WebdriverIO configuration.
    * Run 'npm install' to install all required dependencies listed in the 'package.json' file.
    * To execute a single test, use the command 'npm run test-local'.
@@ -36,11 +37,11 @@ Before you begin with the Mobile Automation using TypeScript, WebdriverIO and Ap
 
 # Folder Structure
 
-   * apk: Android app 
+   * apk: Android app
    * config: Browserstack configuration file
    * reporting: Loggers file
    * screens: Page Object Model (POM) screens
-   * resources: Custom types -> Interfaces, testdata -> JSON files
+   * resources: Custom types -> Interfaces, test data -> JSON files
    * .github -> GitHub Actions workflow configuration (.yml) file
    * specs: All test files
    * utilities: All common methods
