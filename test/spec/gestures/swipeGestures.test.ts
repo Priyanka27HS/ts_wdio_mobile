@@ -1,7 +1,7 @@
-import { BaseActions } from "../../utilities/baseActions.ts";
-import { ProductsScreen } from "../../screens/productScreen";
-import { AppActionsUtil } from "../../utilities/appActionsUtil.ts";
-import { LOGGER, LoggerHelper } from "../../customLogger/loggerHelper.ts";
+import { BaseActions } from "../../../utilities/baseActions.ts";
+import { ProductsScreen } from "../../screens/productScreen.ts";
+import { AppActionsUtil } from "../../../utilities/appActionsUtil.ts";
+import { LOGGER, LoggerHelper } from "../../../customLogger/loggerHelper.ts";
 
 let productsScreen: ProductsScreen;
 let baseActions: BaseActions;

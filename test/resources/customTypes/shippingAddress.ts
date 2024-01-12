@@ -1,4 +1,4 @@
-export interface ShippingAddressUi {
+export interface ShippingAddress {
 
     fullName: string,
     addressLine1: string,

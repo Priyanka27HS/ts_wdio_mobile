@@ -1,12 +1,12 @@
 import * as assert from 'assert';
-import { LoginScreen } from "../../screens/loginScreen";
-import { LogoutScreen } from "../../screens/logOutScreen";
-import { ProductsScreen } from '../../screens/productScreen';
-import { CartScreen } from "../../screens/cartScreen";
-import { MyCartScreen } from "../../screens/myCartScreen";
-import { AppActionsUtil } from "../../utilities/appActionsUtil.ts";
-import { LOGGER, LoggerHelper } from '../../customLogger/loggerHelper.ts';
-import { LoginDetails } from "../../resources/customTypes/loginDetails";
+import { LoginScreen } from "../../screens/loginScreen.ts";
+import { LogoutScreen } from "../../screens/logOutScreen.ts";
+import { ProductsScreen } from '../../screens/productScreen.ts';
+import { CartScreen } from "../../screens/cartScreen.ts";
+import { MyCartScreen } from "../../screens/myCartScreen.ts";
+import { AppActionsUtil } from "../../../utilities/appActionsUtil.ts";
+import { LOGGER, LoggerHelper } from '../../../customLogger/loggerHelper.ts';
+import { LoginDetails } from "../../resources/customTypes/loginDetails.ts";
 import * as loginDetailsJson from "../../resources/testdata/loginDetails.json"
 
 const appActionsUtil = new AppActionsUtil;

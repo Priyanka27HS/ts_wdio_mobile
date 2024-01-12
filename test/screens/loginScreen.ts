@@ -1,7 +1,6 @@
 import { ProductsScreen } from "./productScreen"
 import { LeftScreenMenu } from "./leftScreenMenu"
-import { BaseActions } from "../utilities/baseActions";
-
+import { BaseActions } from "../../utilities/baseActions";
 
 export class LoginScreen {
 

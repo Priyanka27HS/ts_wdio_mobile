@@ -1,6 +1,6 @@
 import { $ } from "@wdio/globals";
-import { ShippingAddressUi } from "../resources/customTypes/shippingAddressUi.ts";
-import { CardDetails } from "../resources/customTypes/cardDetailsUi.ts"
+import { ShippingAddress } from "../resources/customTypes/shippingAddress.ts";
+import { CardDetails } from "../resources/customTypes/cardDetails.ts"
 
 export class CheckOutScreen {
 
@@ -95,7 +95,7 @@ export class CheckOutScreen {
         await continueShoppingButtonEle.click()
     }
 
-    async enterShippingAddressDetails(shippingAddressDetails: ShippingAddressUi) {
+    async enterShippingAddressDetails(shippingAddressDetails: ShippingAddress) {
         await this.enterFullName(shippingAddressDetails.fullName);
         await this.enterAddressLine1(shippingAddressDetails.addressLine1);
         await this.enterAddressLine2(shippingAddressDetails.addressLine2);
