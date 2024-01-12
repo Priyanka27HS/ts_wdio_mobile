@@ -1,6 +1,6 @@
 import { SwipeCordinates } from "../resources/customTypes/swipeCordinates"
 import { $ } from "@wdio/globals"
-import { LOGGER } from "../reporting/loggerHelper";
+import { LOGGER } from "../customLogger/loggerHelper";
 import { loggers } from "winston";
 
 export class BaseActions {
