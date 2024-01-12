@@ -3,14 +3,14 @@ import { ProductsScreen } from "../../screens/productScreen.ts";
 import { CartScreen } from "../../screens/cartScreen.ts";
 import { MyCartScreen } from "../../screens/myCartScreen.ts";
 import { CheckOutScreen } from "../../screens/checkOutScreen.ts";
-import { ShippingAddressUi } from "../../resources/customTypes/shippingAddressUi.ts";
-import { CardDetails } from "../../resources/customTypes/cardDetailsUi.ts"
-import { AppActionsUtil } from "../../utilities/appActionsUtil.ts";
-import { LOGGER, LoggerHelper } from "../../customLogger/loggerHelper.ts";
+import { ShippingAddress } from "../../resources/customTypes/shippingAddress.ts";
+import { CardDetails } from "../../resources/customTypes/cardDetails.ts"
+import { AppActionsUtil } from "../../../utilities/appActionsUtil.ts";
+import { LOGGER, LoggerHelper } from "../../../customLogger/loggerHelper.ts";
 import * as shippingAddressDetailsJson from "../../resources/testdata/shippingAddressDetails.json"
 import * as cardDetailsJson from "../../resources/testdata/cardDetails.json"
-import { FileUtils } from "../../utilities/fileUtil.ts";
-import { LoginDetails } from "../../resources/customTypes/loginDetails";
+import { FileUtils } from "../../../utilities/fileUtil.ts";
+import { LoginDetails } from "../../resources/customTypes/loginDetails.ts";
 import * as loginDetailsJson from "../../resources/testdata/loginDetails.json"
 
 let loginScreen : LoginScreen;
@@ -43,7 +43,7 @@ describe('Add Products to the cart', () => {
     it('Add first item to the cart', async () => {
 
         const loginDetails: LoginDetails = FileUtils.convertJsonToCustomType(loginDetailsJson);
-        const shippingAddressDetails: ShippingAddressUi = FileUtils.convertJsonToCustomType(shippingAddressDetailsJson);
+        const shippingAddressDetails: ShippingAddress = FileUtils.convertJsonToCustomType(shippingAddressDetailsJson);
         const cardDetails: CardDetails = FileUtils.convertJsonToCustomType(cardDetailsJson);
 
         await loginScreen.login(loginDetails.username, loginDetails.password);

@@ -1,5 +1,5 @@
 import { $ } from "@wdio/globals";
-import { BaseActions } from "../utilities/baseActions";
+import { BaseActions } from "../../utilities/baseActions";
 
 let baseActions: BaseActions;
 
@@ -16,7 +16,6 @@ export class ProductsScreen {
         sauceLabsBackPackProduct: "(//android.widget.TextView[@content-desc='store item text'])[1]",
         firstItem: "(//android.view.ViewGroup[@content-desc='store item'])[1]/android.view.ViewGroup[1]/android.widget.ImageView",
         footerLabel: "//android.widget.TextView[@text='© 2024 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy.']/parent::android.view.ViewGroup"
-
     }
 
     async getHamburgerIconEle() {

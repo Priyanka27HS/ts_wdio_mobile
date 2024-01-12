@@ -1,9 +1,9 @@
 import { LeftScreenMenu } from "../../screens/leftScreenMenu.ts";
-import { LoginScreen } from "../../screens/loginScreen";
+import { LoginScreen } from "../../screens/loginScreen.ts";
 import { ProductsScreen } from "../../screens/productScreen.ts";
 import { WebViewScreen } from "../../screens/webViewScreen.ts";
-import { AppActionsUtil } from "../../utilities/appActionsUtil.ts";
-import { SwitchContextUtil } from "../../utilities/switchContextUtil.ts";
+import { AppActionsUtil } from "../../../utilities/appActionsUtil.ts";
+import { SwitchContextUtil } from "../../../utilities/switchContextUtil.ts";
 
 let loginScreen : LoginScreen;
 let productsScreen : ProductsScreen;
