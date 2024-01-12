@@ -40,11 +40,14 @@ Before you begin with the Mobile Automation using TypeScript, WebdriverIO, and A
    * apk: Android app
    * config: Browserstack configuration file
    * customLogger: Loggers file
-   * screens: Page Object Model (POM) screens
-   * resources: Custom types -> Interfaces, test data -> JSON files
-   * .github -> GitHub Actions workflow configuration (.yml) file
-   * specs: All test files
+
+   * test 
+      - resources: Custom types -> Interfaces, test-data -> JSON files
+      - screens: Page Object Model (POM) screens
+      - spec: All test files
+
    * utilities: All common methods
+   * .github -> GitHub Actions workflow configuration (.yml) file
    * .gitignore: Git ignore file
    * package.json: All required dependencies are installed
    * Typescript and WDIO configs: ts config.json file, wdio.conf.ts file
