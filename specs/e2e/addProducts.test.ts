@@ -6,7 +6,7 @@ import { CheckOutScreen } from "../../screens/checkOutScreen.ts";
 import { ShippingAddressUi } from "../../resources/customTypes/shippingAddressUi.ts";
 import { CardDetails } from "../../resources/customTypes/cardDetailsUi.ts"
 import { AppActionsUtil } from "../../utilities/appActionsUtil.ts";
-import { LOGGER, LoggerHelper } from "../../reporting/loggerHelper.ts";
+import { LOGGER, LoggerHelper } from "../../customLogger/loggerHelper.ts";
 import * as shippingAddressDetailsJson from "../../resources/testdata/shippingAddressDetails.json"
 import * as cardDetailsJson from "../../resources/testdata/cardDetails.json"
 import { FileUtils } from "../../utilities/fileUtil.ts";

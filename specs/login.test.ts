@@ -1,5 +1,5 @@
 import { LoginScreen } from "../screens/loginScreen";
-import { LOGGER, LoggerHelper } from "../reporting/loggerHelper";
+import { LOGGER, LoggerHelper } from "../customLogger/loggerHelper";
 import { LoginDetails } from "../resources/customTypes/loginDetails";
 import * as loginDetailsJson from "../resources/testdata/loginDetails.json"
 
