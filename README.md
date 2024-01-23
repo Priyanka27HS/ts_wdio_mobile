@@ -23,6 +23,8 @@ Before you begin with the Mobile Automation using TypeScript, WebdriverIO, and A
    * Android Studio
    * Install Android SDK Platform Tools -> brew install --cask android-platform-tools
    * Open Terminal and type 'adb' to ensure that the Android Debug Bridge is recognized.
+   * After executing your tests locally or on BrowserStack, generate and serve the Allure Report. 
+   * Install Allure Command Line globally -> 'npm install -g allure-commandline'.
    * Browserstack account for BrowserStack App automation.
    * The framework is set up on your system.
 
@@ -34,6 +36,7 @@ Before you begin with the Mobile Automation using TypeScript, WebdriverIO, and A
    * Run 'npm install' to install all required dependencies listed in the 'package.json' file.
    * To execute a single test, use the command 'npm run test-local'.
    * To execute all tests, use the command 'npm run wdio' for executing all tests.
+   * To serve the Allure report locally and access it through your browser, use the command 'allure serve' to view the report.
 
 # Folder Structure
 
