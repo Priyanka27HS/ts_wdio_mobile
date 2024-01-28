@@ -1,11 +1,11 @@
-import { ProductsScreen } from "./productScreen"
+import { HomeScreen } from "./homeScreen"
 
 export class MyCartScreen {
 
-    productsScreen : ProductsScreen;
+    homeScreen : HomeScreen;
 
     constructor() {
-        this.productsScreen = new ProductsScreen();
+        this.homeScreen = new HomeScreen();
     }
 
     private selectors = {

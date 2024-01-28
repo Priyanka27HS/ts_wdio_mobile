@@ -1,5 +1,5 @@
 import { LoginScreen } from "../../screens/loginScreen.ts";
-import { ProductsScreen } from "../../screens/productScreen.ts";
+import { HomeScreen } from "../../screens/homeScreen.ts";
 import { CartScreen } from "../../screens/cartScreen.ts";
 import { MyCartScreen } from "../../screens/myCartScreen.ts";
 import { CheckOutScreen } from "../../screens/checkOutScreen.ts";
@@ -14,7 +14,7 @@ import { LoginDetails } from "../../resources/customTypes/loginDetails.ts";
 import * as loginDetailsJson from "../../resources/testdata/loginDetails.json"
 
 let loginScreen : LoginScreen;
-let productsScreen : ProductsScreen;
+let homeScreen : HomeScreen;
 let checkOutScreen : CheckOutScreen;
 let cartScreen : CartScreen;
 let myCartScreen : MyCartScreen;
@@ -27,7 +27,7 @@ describe('Add Products to the cart', () => {
 
     before(async () => {
         loginScreen = new LoginScreen();
-        productsScreen = new ProductsScreen();
+        homeScreen = new HomeScreen();
         cartScreen = new CartScreen();
         myCartScreen = new MyCartScreen();
         checkOutScreen = new CheckOutScreen();
@@ -48,7 +48,7 @@ describe('Add Products to the cart', () => {
 
         await loginScreen.login(loginDetails.username, loginDetails.password);
         LOGGER.info('***** Adding products to the cart *****');
-        await productsScreen.clickOnProduct();
+        await homeScreen.clickOnProduct();
         await cartScreen.addToCart();
         await cartScreen.getCartIcon();
         await myCartScreen.clickProceedToCheckoutButton();

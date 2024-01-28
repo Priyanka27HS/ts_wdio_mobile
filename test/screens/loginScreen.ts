@@ -1,14 +1,14 @@
-import { ProductsScreen } from "./productScreen"
+import { HomeScreen } from "./homeScreen"
 import { LeftScreenMenu } from "./leftScreenMenu"
 import { BaseActions } from "../../utilities/baseActions";
 
 export class LoginScreen {
 
-    productsScreen : ProductsScreen;
+    homeScreen : HomeScreen;
     leftScreenMenu: LeftScreenMenu;
 
     constructor() {
-        this.productsScreen = new ProductsScreen();
+        this.homeScreen = new HomeScreen();
         this.leftScreenMenu = new LeftScreenMenu();
     }
 
@@ -32,7 +32,7 @@ export class LoginScreen {
 
     public async login(username : string, password : string) {
 
-        await (await this.productsScreen.getHamburgerIconEle()).click();
+        await (await this.homeScreen.getHamburgerIconEle()).click();
         const menuItemLoginEle = await this.leftScreenMenu.getLoginButtonFromSideMenu();
         await menuItemLoginEle.waitForDisplayed();
         await menuItemLoginEle.click();

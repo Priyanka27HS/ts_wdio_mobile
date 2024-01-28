@@ -1,9 +1,13 @@
 import { $ } from "@wdio/globals";
 import { BaseActions } from "../../utilities/baseActions";
+import { XpathUtil } from "../../utilities/xpathUtil";
+import { LOGGER } from "../../customLogger/loggerHelper";
+
+const platform = process.env.PLATFORM;
 
 let baseActions: BaseActions;
 
-export class ProductsScreen {
+export class HomeScreen extends BaseActions {
 
     baseActions = new BaseActions();
 
@@ -15,7 +19,8 @@ export class ProductsScreen {
         fleeceJacketPrice: '//android.widget.TextView[@text="$49.99"]',
         sauceLabsBackPackProduct: "(//android.widget.TextView[@content-desc='store item text'])[1]",
         firstItem: "(//android.view.ViewGroup[@content-desc='store item'])[1]/android.view.ViewGroup[1]/android.widget.ImageView",
-        footerLabel: "//android.widget.TextView[@text='© 2024 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy.']/parent::android.view.ViewGroup"
+        footerLabel: "//android.widget.TextView[@text='© 2024 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy.']/parent::android.view.ViewGroup",
+        productByName: "//android.widget.TextView[@content-desc='store item text' and @text='##PLACEHOLDER##']/parent::android.view.ViewGroup"
     }
 
     async getHamburgerIconEle() {

@@ -1,15 +1,15 @@
 import { $ } from "@wdio/globals"
 import { LeftScreenMenu } from "./leftScreenMenu";
-import { ProductsScreen } from "./productScreen"
+import { HomeScreen } from "./homeScreen"
 
 
 export class LogoutScreen {
 
-    productsScreen : ProductsScreen;
+    homeScreen : HomeScreen;
     leftScreenMenu: LeftScreenMenu;
 
     constructor() {
-        this.productsScreen = new ProductsScreen();
+        this.homeScreen = new HomeScreen();
         this.leftScreenMenu = new LeftScreenMenu();
     }
 
@@ -36,14 +36,14 @@ export class LogoutScreen {
 
     public async logout() : Promise<void> {
 
-        (await this.productsScreen.getHamburgerIconEle()).click();
+        (await this.homeScreen.getHamburgerIconEle()).click();
         (await this.leftScreenMenu.getLogOutButton()).click();
         await (await this.getLogOutButtonEle()).waitForDisplayed();
         await (await this.getLogOutButtonEle()).click();
         (await this.getLogOutSucessMsgEle()).waitForDisplayed();
         await (await this.getLogOutOkButtonEle()).waitForDisplayed();
         await (await this.getLogOutOkButtonEle()).click();
-        (await this.productsScreen.getProductTextOnHomeScreenEle()).waitForDisplayed();
+        (await this.homeScreen.getProductTextOnHomeScreenEle()).waitForDisplayed();
 
     }
 
