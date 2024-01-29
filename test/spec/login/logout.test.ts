@@ -1,8 +1,8 @@
-import { LoginScreen } from "../screens/loginScreen";
-import { LogoutScreen } from "../screens/logOutScreen";
-import { LOGGER, LoggerHelper } from "../../customLogger/loggerHelper";
-import { LoginDetails } from "../resources/customTypes/loginDetails";
-import * as loginDetailsJson from "../resources/testdata/loginDetails.json"
+import { LoginScreen } from "../../screens/loginScreen";
+import { LogoutScreen } from "../../screens/logOutScreen";
+import { LOGGER, LoggerHelper } from "../../../customLogger/loggerHelper";
+import { LoginDetails } from "../../resources/customTypes/loginDetails";
+import * as loginDetailsJson from "../../resources/testdata/loginDetails.json"
 
 let loginScreen : LoginScreen;
 let logoutScreen  : LogoutScreen;

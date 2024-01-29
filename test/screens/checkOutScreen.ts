@@ -21,6 +21,7 @@ export class CheckOutScreen {
         reviewOrderButton: "~Review Order button",
         placeOrderButton: "~Place Order button",
         continueShoppingButton: "~Continue Shopping button",
+        orderConfirmation: "//android.view.ViewGroup[@content-desc='checkout complete screen']/android.widget.ScrollView/android.view.ViewGroup/android.widget.TextView[4]"
 
     }
 
@@ -95,6 +96,10 @@ export class CheckOutScreen {
         await continueShoppingButtonEle.click()
     }
 
+    public async getOrderConfirmationEle() {
+        return await $(this.selectors.orderConfirmation);
+    }	    
+
     async enterShippingAddressDetails(shippingAddressDetails: ShippingAddress) {
         await this.enterFullName(shippingAddressDetails.fullName);
         await this.enterAddressLine1(shippingAddressDetails.addressLine1);
@@ -113,5 +118,4 @@ export class CheckOutScreen {
         await this.enterSecurityCode(cardDetails.securityCode);
         await driver.hideKeyboard();
     }
-
 }

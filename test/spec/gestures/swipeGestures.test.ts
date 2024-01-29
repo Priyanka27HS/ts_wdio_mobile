@@ -1,9 +1,9 @@
 import { BaseActions } from "../../../utilities/baseActions.ts";
-import { ProductsScreen } from "../../screens/productScreen.ts";
+import { HomeScreen } from "../../screens/homeScreen.ts";
 import { AppActionsUtil } from "../../../utilities/appActionsUtil.ts";
 import { LOGGER, LoggerHelper } from "../../../customLogger/loggerHelper.ts";
 
-let productsScreen: ProductsScreen;
+let homeScreen: HomeScreen;
 let baseActions: BaseActions;
 
 const appActionsUtil = new AppActionsUtil;
@@ -12,7 +12,7 @@ const specName: string = 'Swipe gestures';
 describe("***** Performing Swipe Gestures *****", () => {
 
     before(async () => {
-        productsScreen = new ProductsScreen();
+        homeScreen = new HomeScreen();
         baseActions = new BaseActions();
         LoggerHelper.setupLogger(specName);
     });
@@ -23,7 +23,7 @@ describe("***** Performing Swipe Gestures *****", () => {
 
 
     it('Scroll until an element is visible on a mobile app', async () => {
-        const footerEle = await productsScreen.getFooterLabel();
+        const footerEle = await homeScreen.getFooterLabel();
         await BaseActions.swipeUpFromMiddle();
         LOGGER.info('***** Scroll an element is done *****');
     })
@@ -41,9 +41,9 @@ describe("***** Performing Swipe Gestures *****", () => {
     
 
     it('Scroll until an element is visible on a mobile app -> Swipe Gestures Based on Screen Percentages', async () => {
-        await (await productsScreen.getFirstItemEle()).waitForDisplayed();
+        await (await homeScreen.getFirstItemEle()).waitForDisplayed();
         await driver.pause(3000);
-        await BaseActions.swipeByPercentage(await productsScreen.getFooterLabel(), 30, 70);
+        await BaseActions.swipeByPercentage(await homeScreen.getFooterLabel(), 30, 70);
         LOGGER.info('***** Swipe by percentage is done *****');
     });
 

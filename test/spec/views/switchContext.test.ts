@@ -1,12 +1,12 @@
 import { LeftScreenMenu } from "../../screens/leftScreenMenu.ts";
 import { LoginScreen } from "../../screens/loginScreen.ts";
-import { ProductsScreen } from "../../screens/productScreen.ts";
+import { HomeScreen } from "../../screens/homeScreen.ts";
 import { WebViewScreen } from "../../screens/webViewScreen.ts";
 import { AppActionsUtil } from "../../../utilities/appActionsUtil.ts";
 import { SwitchContextUtil } from "../../../utilities/switchContextUtil.ts";
 
 let loginScreen : LoginScreen;
-let productsScreen : ProductsScreen;
+let homeScreen : HomeScreen;
 let leftScreenMenu : LeftScreenMenu;
 let webViewScreen : WebViewScreen;
 let switchContextUtil : SwitchContextUtil;
@@ -17,7 +17,7 @@ describe('***** Switch between Web view and Native view in a Mobile App *****', 
 
     before(async () => {
         loginScreen = new LoginScreen();
-        productsScreen = new ProductsScreen();
+        homeScreen = new HomeScreen();
         leftScreenMenu = new LeftScreenMenu();
         webViewScreen = new WebViewScreen();
         switchContextUtil = new SwitchContextUtil();
@@ -31,7 +31,7 @@ describe('***** Switch between Web view and Native view in a Mobile App *****', 
 
         const url: string = 'https://www.google.com';
 
-        (await productsScreen.getHamburgerIconEle()).click();
+        (await homeScreen.getHamburgerIconEle()).click();
         await leftScreenMenu.clickMenuItemWebview();
         await webViewScreen.enterUrl(url);
         await webViewScreen.clickGoToSiteButton();
@@ -50,14 +50,14 @@ describe('***** Switch between Web view and Native view in a Mobile App *****', 
         console.log('The webview url is : ' + await browser.getUrl());
         await driver.switchContext(nativeView.toString());
         await driver.back();
-        await productsScreen.getHamburgerIconEle();
+        await homeScreen.getHamburgerIconEle();
     });
 
     it('Switching between native and web views', async () => {
 
         const url: string = 'https://www.google.com';
     
-        (await productsScreen.getHamburgerIconEle()).click();
+        (await homeScreen.getHamburgerIconEle()).click();
         await leftScreenMenu.clickMenuItemWebview();
         await webViewScreen.enterUrl(url);
         await webViewScreen.clickGoToSiteButton();
@@ -68,7 +68,6 @@ describe('***** Switch between Web view and Native view in a Mobile App *****', 
         await switchContextUtil.switchToNativeContext();
 
         await driver.back();
-        await productsScreen.getHamburgerIconEle();
+        await homeScreen.getHamburgerIconEle();
     });
-    
 })

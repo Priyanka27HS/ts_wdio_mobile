@@ -1,7 +1,7 @@
 import * as assert from 'assert';
 import { LoginScreen } from "../../screens/loginScreen.ts";
 import { LogoutScreen } from "../../screens/logOutScreen.ts";
-import { ProductsScreen } from '../../screens/productScreen.ts';
+import { HomeScreen } from '../../screens/homeScreen.ts';
 import { CartScreen } from "../../screens/cartScreen.ts";
 import { MyCartScreen } from "../../screens/myCartScreen.ts";
 import { AppActionsUtil } from "../../../utilities/appActionsUtil.ts";
@@ -16,7 +16,7 @@ let loginDetails: LoginDetails;
 describe('Product Price Comparison', () => {
 
     let loginScreen : LoginScreen;
-    let productsScreen : ProductsScreen;
+    let homeScreen : HomeScreen;
     let cartScreen : CartScreen;
     let myCartScreen : MyCartScreen;
     let logoutScreen  : LogoutScreen;
@@ -24,7 +24,7 @@ describe('Product Price Comparison', () => {
     before(async () => {
 
         loginScreen = new LoginScreen();
-        productsScreen = new ProductsScreen();
+        homeScreen = new HomeScreen();
         cartScreen = new CartScreen();
         myCartScreen = new MyCartScreen();
         logoutScreen = new LogoutScreen();
@@ -38,9 +38,9 @@ describe('Product Price Comparison', () => {
 
     it('Assert the prices from both the pages', async () => {
 
-        (await productsScreen.getFleeceJacketLabel()).click();
+        (await homeScreen.getFleeceJacketLabel()).click();
 
-        const productsPagePrice = await productsScreen.getFleeceJacketPriceText();
+        const productsPagePrice = await homeScreen.getFleeceJacketPriceText();
         const cartPagePrice = await cartScreen.getProductPriceLabelText();
 
         assert.equal(productsPagePrice, cartPagePrice, 'Product prices do not match');
@@ -49,7 +49,7 @@ describe('Product Price Comparison', () => {
 
     it('Add products to the cart and remove item', async () => {
 
-        (await productsScreen.getFleeceJacketLabel()).click();
+        (await homeScreen.getFleeceJacketLabel()).click();
         await cartScreen.addToCartProduct();
 
         const noItemsLabel = await (await myCartScreen.getNoItemsLabel()).getText();

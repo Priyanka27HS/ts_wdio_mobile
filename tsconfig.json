@@ -24,5 +24,6 @@
         "noUnusedParameters": false,
         "noFallthroughCasesInSwitch": true,
         "esModuleInterop": true   
-    }
+    },
+    "compileOnSave": true,
 }

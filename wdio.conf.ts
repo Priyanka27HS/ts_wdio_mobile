@@ -1,6 +1,30 @@
 import type { Options } from '@wdio/types'
 import { join } from 'path'
 
+const fs = require('fs');
+
+const ANDROID_CAPABILITIES = [
+    {
+        "appium:platformName": "Android",
+        "appium:deviceName": "Pixel 6 Pro API 32",
+        "appium:app": join(process.cwd(), '/app/android/Sauce_labs.apk'),
+        "appium:autoGrantPermissions": true,
+        "appium:automationName": "UiAutomator2",
+        "appium:udid": "emulator-5554",
+        "appium:chromedriverExecutable": `${process.cwd()}/chromedriver-mobile/chromedriver`,
+    }
+];
+
+const IOS_CAPABILITIES = [
+    {
+        "platformName": "iOS",
+        "appium:deviceName": "iPhone 15",
+        "appium:automationName": "XCUITest",
+        "appium:platformVersion": "17.2",
+        "appium:app": "/Users/testvagrant/Documents/ts_wdio/app/ios/ios_app"
+    }
+];
+
 // Now you can use 'path' as a variable in your TypeScript code
 export const config: Options.Testrunner = {
     //
@@ -64,15 +88,7 @@ export const config: Options.Testrunner = {
     // https://saucelabs.com/platform/platform-configurator
     //
 
-    capabilities: [{
-        // capabilities for local Appium web tests on an Android Emulator
-            "appium:platformName": "Android",
-            "appium:deviceName": "Pixel_6_API_32",
-            "appium:app": join(process.cwd(), '/apk/android/Sauce_labs.apk'),
-            "appium:automationName": "UiAutomator2",
-            "appium:udid": "emulator-5554",
-            "appium:chromedriverExecutable": `${process.cwd()}/chromedriver-mobile/chromedriver`
-    }],
+    capabilities: process.env.PLATFORM === "ANDROID" ? ANDROID_CAPABILITIES : IOS_CAPABILITIES,
 
     //
     // ===================

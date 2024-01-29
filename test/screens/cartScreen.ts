@@ -1,14 +1,14 @@
-import { ProductsScreen } from "./productScreen"
+import { HomeScreen } from "./homeScreen"
 import { MyCartScreen } from "./myCartScreen";
 import { $ } from "@wdio/globals"
 
 export class CartScreen {
 
-    productsScreen : ProductsScreen;
+    homeScreen : HomeScreen;
     myCartScreen: MyCartScreen;
 
     constructor() {
-        this.productsScreen = new ProductsScreen();
+        this.homeScreen = new HomeScreen();
         this.myCartScreen= new MyCartScreen();
     }
 
@@ -20,7 +20,6 @@ export class CartScreen {
         addToCartButton: '~Add To Cart button',
         productsHighlightsLabel: '//android.widget.TextView[@text="Product Highlights"]',
         cartBadge: '~cart badge',
-
     }
 
     async getProductPriceLabel() {
@@ -29,6 +28,12 @@ export class CartScreen {
 
     async getIncreaseQuantity() {
         return await $(this.selectors.increaseQuantity);
+    }
+
+    async increaseQuantity(qty: number) {
+        for(let i=1; i<=qty; i++) {
+            (await $(this.selectors.increaseQuantity)).click();
+        }
     }
 
     async getDecreaseQuantity() {
@@ -63,7 +68,7 @@ export class CartScreen {
 
     async addToCartProduct() {
         
-        const fleeceJacketLabelElement = await this.productsScreen.getFleeceJacketLabel();
+        const fleeceJacketLabelElement = await this.homeScreen.getFleeceJacketLabel();
         await fleeceJacketLabelElement.waitForDisplayed();
 
         for (let i = 0; i < 3; i++) {
