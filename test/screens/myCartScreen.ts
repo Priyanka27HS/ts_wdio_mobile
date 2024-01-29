@@ -16,6 +16,7 @@ export class MyCartScreen {
         cartIsEmptyMessage: '//android.widget.TextView[@text="Oh no! Your cart is empty. Fill it up with swag to complete your purchase."]',
         goShoppingButton: '//android.view.ViewGroup[@content-desc="Go Shopping button"]',
         proceedToCheckoutButton: "~Proceed To Checkout button",
+        totalPrice: "~total price"
 
     }
 
@@ -24,7 +25,16 @@ export class MyCartScreen {
     }
 
     async getRemoveItem() {
-        return await $(this.selectors.removeItem);
+        try {
+            const clickRemoveItemButtonEle = await $(this.selectors.removeItem);
+            await clickRemoveItemButtonEle.waitForExist({ timeout: 5000 }); 
+            await clickRemoveItemButtonEle.waitForDisplayed();
+            await clickRemoveItemButtonEle.click();
+            return clickRemoveItemButtonEle;
+        } catch (error) {
+            console.error("Error in getRemoveItem:", error);
+            throw error;
+        }
     }
 
     async getNoItemsLabel() {
@@ -41,6 +51,10 @@ export class MyCartScreen {
 
     async getProccedTOCheckoutButtonEle() {
         return await $(this.selectors.proceedToCheckoutButton);
+    }
+
+    async getTotalPriceEle() {
+        return await $(this.selectors.totalPrice);
     }
 
     async clickProceedToCheckoutButton() {

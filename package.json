@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "wdio": "wdio run ./wdio.conf.ts",
     "android": "PLATFORM=ANDROID wdio run ./config/wdio.mobile.config.ts --spec",
-    "test-android": "PLATFORM=ANDROID wdio run ./config/wdio.mobile.config.ts --spec test/spec/e2e/addProducts.test.ts",
+    "test-android": "PLATFORM=ANDROID npx wdio run ./config/wdio.mobile.config.ts --spec test/spec/cart/productCart.test.ts",
     "test-ios": "PLATFORM=IOS wdio run ./config/wdio.mobile.config.ts --spec test/spec/e2e/addProducts.test.ts",
     "test-browserstack": "wdio run ./config/wdio.android.bs.conf.ts --spec test/spec/products/purchaseProduct.test.ts"
   },
@@ -20,7 +20,7 @@
     "@wdio/allure-reporter": "^8.27.0",
     "@wdio/appium-service": "^8.27.0",
     "@wdio/browserstack-service": "^8.27.1",
-    "@wdio/cli": "^8.27.0",
+    "@wdio/cli": "^8.29.1",
     "@wdio/globals": "^8.27.0",
     "@wdio/local-runner": "^8.27.0",
     "@wdio/mocha-framework": "^8.27.0",

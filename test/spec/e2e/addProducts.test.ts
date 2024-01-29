@@ -57,6 +57,12 @@ describe('Add Products to the cart', () => {
         await checkOutScreen.enterCardDetails(cardDetails);
         await checkOutScreen.clickReviewOrderButton();
         await checkOutScreen.clickPlaceOrderButton();
+
+        const orderConfirmationEle = await checkOutScreen.getOrderConfirmationEle();
+        const orderConfirmationText = await orderConfirmationEle.getText();
+
+        expect(orderConfirmationText).toBe(' Your order has been dispatched and will arrive as fast as the pony gallops!');
+
         await checkOutScreen.clickContinueShoppingButton();
         LOGGER.info('***** Added products to the cart successfully *****')
     });

@@ -1,11 +1,12 @@
 export class FileUtils {
 
-    /**
-     * Convert a JSON object to a custom type.
-     * @param json - The JSON object.
-     * @returns - The custom type object.
-     */
-    static convertJsonToCustomType<T>(json: Record<string, unknown>): T {
-        return json as T;
+    static convertJsonToCustomType<T>(json: Record<string, unknown> | Record<string, unknown>[]): T {
+        if (Array.isArray(json)) {
+            // If jsonData is an array, return it as is
+            return json as T;
+        } else {
+            // If jsonData is not an array, return it as is
+            return json as T;
+        }
     }
 }

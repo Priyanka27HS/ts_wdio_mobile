@@ -30,6 +30,12 @@ export class CartScreen {
         return await $(this.selectors.increaseQuantity);
     }
 
+    async increaseQuantity(qty: number) {
+        for(let i=1; i<=qty; i++) {
+            (await $(this.selectors.increaseQuantity)).click();
+        }
+    }
+
     async getDecreaseQuantity() {
         return await $(this.selectors.decreaseQuantity);
     }

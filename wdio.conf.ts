@@ -1,15 +1,17 @@
 import type { Options } from '@wdio/types'
 import { join } from 'path'
 
+const fs = require('fs');
+
 const ANDROID_CAPABILITIES = [
     {
         "appium:platformName": "Android",
         "appium:deviceName": "Pixel 6 Pro API 32",
         "appium:app": join(process.cwd(), '/app/android/Sauce_labs.apk'),
+        "appium:autoGrantPermissions": true,
         "appium:automationName": "UiAutomator2",
         "appium:udid": "emulator-5554",
         "appium:chromedriverExecutable": `${process.cwd()}/chromedriver-mobile/chromedriver`,
-        "appium:noReset": true
     }
 ];
 
