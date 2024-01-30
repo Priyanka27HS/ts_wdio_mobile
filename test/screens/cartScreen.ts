@@ -58,7 +58,6 @@ export class CartScreen {
         await addToCartButton.waitForDisplayed();
         await addToCartButton.click();
     }
-
     
     async getProductPriceLabelText() {
         const productPriceLabelElement = await $(this.selectors.productPriceLabel);
@@ -67,7 +66,7 @@ export class CartScreen {
     }
 
     async addToCartProduct() {
-        
+
         const fleeceJacketLabelElement = await this.homeScreen.getFleeceJacketLabel();
         await fleeceJacketLabelElement.waitForDisplayed();
 

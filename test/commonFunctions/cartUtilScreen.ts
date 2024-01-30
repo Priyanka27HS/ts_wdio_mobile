@@ -2,7 +2,7 @@ import { CartScreen } from "../screens/cartScreen";
 import { MyCartScreen } from "../screens/myCartScreen";
 import { HomeScreen } from "../screens/homeScreen";
 
-export class CartUtil {
+export class CartUtilScreen {
 
     cartScreen: CartScreen;
     myCartScreen: MyCartScreen;
@@ -32,5 +32,22 @@ export class CartUtil {
         } else {
             throw new Error(`Product not found: ${productName}`);
         }
+    }
+
+    async getCartItems() {
+        await driver.pause(3000);
+        const cartItemsElements = await this.myCartScreen.getProductText();
+        const cartItems: string[] = [];
+        for (const cartItemElement of cartItemsElements) {
+            const itemName = await cartItemElement.getText();
+            cartItems.push(itemName);
+        }
+        return cartItems;
+    }
+
+    async verifyTotalPriceInCart(expectedTotalPrice: number) {
+        const actualTotalPriceBeforeRemove = await (await this.myCartScreen.getTotalPriceEle()).getText();
+        const actualTotalPrice = Number(actualTotalPriceBeforeRemove.replace('$', ''));
+        expect(actualTotalPrice).toEqual(expectedTotalPrice);
     }
 }

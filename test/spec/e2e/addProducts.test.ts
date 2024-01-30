@@ -38,7 +38,6 @@ describe('Add Products to the cart', () => {
     afterEach(async () => {
         await appActionsUtil.appActions();
     });
-    
 
     it('Add first item to the cart', async () => {
 

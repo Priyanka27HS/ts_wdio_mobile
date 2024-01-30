@@ -1,5 +1,8 @@
 import { $ } from "@wdio/globals";
 import { BaseActions } from "../../utilities/baseActions";
+import { expect } from 'chai';
+import { LOGGER } from "../../customLogger/loggerHelper";
+import { XpathUtil } from "../../utilities/xpathUtil";
 
 const platform = process.env.PLATFORM;
 
@@ -12,17 +15,44 @@ export class HomeScreen extends BaseActions {
     private selectors = {
 
         hamburgerIcon:  platform === 'ANDROID' ? "~open menu": "~tab bar option menu",
-        productTextOnHomeScreen: "//android.widget.TextView[@text='Products']",
+        productTextOnHomeScreen: platform === "ANDROID" ?
+        "//android.widget.TextView[@text='Products']" :
+        "//XCUIElementTypeStaticText[@name='Products']",
+
         fleeceJacketLabel: '//android.widget.TextView[@text="Sauce Labs Fleece Jacket"]',
         fleeceJacketPrice: '//android.widget.TextView[@text="$49.99"]',
         sauceLabsBackPackProduct: "(//android.widget.TextView[@content-desc='store item text'])[1]",
-        firstItem: "(//android.view.ViewGroup[@content-desc='store item'])[1]/android.view.ViewGroup[1]/android.widget.ImageView",
-        boltTshirtProduct: "//android.widget.TextView[@text='Sauce Labs Bolt T-Shirt']",
-        boltTshirtProductPrice: "//android.widget.TextView[@text='$15.99']",
-        footerLabel: "//android.widget.TextView[@text='© 2024 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy.']/parent::android.view.ViewGroup",
-        // productByName: "//android.widget.TextView[@content-desc='store item text' and @text='##PLACEHOLDER##']/parent::android.view.ViewGroup",
-        products: "(//android.widget.TextView[@content-desc='store item text'])"
+
+        firstItem: platform === 'ANDROID' ?
+        "(//android.view.ViewGroup[@content-desc='store item'])[1]/android.view.ViewGroup[1]/android.widget.ImageView" :
+        "",
+
+        footerLabel: platform === "ANDROID" ?
+        "//android.widget.TextView[@text='© 2024 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy.']/parent::android.view.ViewGroup" :
+        "",
+      
+        products: "(//android.widget.TextView[@content-desc='store item text'])",
+        
+        sortButton: platform === "ANDROID" ?
+            "~sort button" :
+            "",
+        sortType: platform === "ANDROID" ?
+            "~##PLACEHOLDER##" :
+            "",
+        productName: platform === "ANDROID" ?
+            "//android.widget.TextView[@content-desc='store item text']" :
+            "",
+        productPrice: platform === "ANDROID" ?
+            "//android.widget.TextView[@content-desc='store item price']" :
+            "",
     }
+
+    static sortingOrder = {
+        NAME_ASCENDING: 'nameAsc',
+        NAME_DESCENDING: 'nameDesc',
+        PRICE_ASCENDING: 'priceAsc',
+        PRICE_DESCENDING: 'priceDesc'
+    };
 
     async getHamburgerIconEle() {
         return await $(this.selectors.hamburgerIcon);
@@ -50,6 +80,10 @@ export class HomeScreen extends BaseActions {
         return await $(this.selectors.sauceLabsBackPackProduct);
     }
 
+    async clickSortButton(): Promise<void> {
+        await (await $(this.selectors.sortButton)).click();
+    }
+
     async clickOnProduct() {
         const productElement = await this.getSauceLabsBackPackProductEle();
         await productElement.waitForDisplayed();
@@ -67,16 +101,6 @@ export class HomeScreen extends BaseActions {
 
     public async getAllProductElements() {
         return await $$(this.selectors.products);
-    }
-
-    public async getBoltTshirtProductEle() {
-        return await $(this.selectors.boltTshirtProduct);
-    }
-
-    async getBoltTshirtPrice() {
-        const boltTshirtPrice = await $(this.selectors.boltTshirtProductPrice);
-        await boltTshirtPrice.waitForDisplayed();
-        return await boltTshirtPrice.getText();
     }
 
     public async selectProductByName(productName: string): Promise<void> {

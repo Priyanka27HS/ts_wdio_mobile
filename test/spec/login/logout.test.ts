@@ -17,7 +17,6 @@ before(() => {
     loginDetails = loginDetailsJson as LoginDetails;
 });
 
-
 describe("Logout from the application", () => {
 
     it("Performing login and logout operations", async () => {

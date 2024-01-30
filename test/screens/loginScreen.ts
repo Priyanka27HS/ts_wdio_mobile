@@ -43,13 +43,12 @@ export class LoginScreen {
         const passwordInputFieldEle = await $(this.selectors.passwordInputField);
         await passwordInputFieldEle.waitForDisplayed();
         await passwordInputFieldEle.click();
-        
+
         BaseActions.swipeUpFromMiddle();
 
         await passwordInputFieldEle.waitForDisplayed();
         await passwordInputFieldEle.setValue(password);
         const loginButtonEle = await $(this.selectors.loginButton);
         await loginButtonEle.click();
-
     }
 }

@@ -7,19 +7,15 @@ import { LoginDetails } from "../../resources/customTypes/loginDetails.ts";
 import * as loginDetailsJson from "../../resources/testdata/loginDetails.json"
 import { FileUtils } from "../../../utilities/fileUtil.ts";
 import { ProductDetails } from "../../resources/customTypes/productDetails.ts";
-import { CartUtil } from "../../commonFunctions/cartUtil.ts";
-import { AppActionsUtil } from "../../../utilities/appActionsUtil.ts";
+import { CartUtilScreen } from "../../commonFunctions/cartUtilScreen.ts";
 import * as productDetailJson from "../../resources/testdata/productDetails.json"
-
-const appActionsUtil = new AppActionsUtil;
 
 let loginScreen: LoginScreen;
 let homeScreen: HomeScreen;
 let cartScreen: CartScreen;
 let myCartScreen: MyCartScreen;
 let loginDetails: LoginDetails;
-let productDetails: ProductDetails;
-let cartUtil: CartUtil;
+let cartUtilScreen: CartUtilScreen;
 
 const NO_ITEMS_LABEL = 'No Items';
 const CART_IS_EMPTY_MESSAGE = 'Oh no! Your cart is empty. Fill it up with swag to complete your purchase.';
@@ -33,33 +29,23 @@ describe("Should able to empty the cart", () => {
         homeScreen = new HomeScreen();
         cartScreen = new CartScreen();
         myCartScreen = new MyCartScreen();
-        cartUtil = new CartUtil();
+        cartUtilScreen = new CartUtilScreen();
         loginDetails = FileUtils.convertJsonToCustomType(loginDetailsJson);
-        // productDetails = FileUtils.convertJsonToCustomType(productDetailJson);
         await loginScreen.login(loginDetails.username, loginDetails.password);
     });
 
-    afterEach(async () => {
-        await appActionsUtil.appActions();
-    });
-
     it("Add products and empty the cart", async () => {
-
         try {
-
-            const productDetailsList: ProductDetails[] = FileUtils.convertJsonToCustomType(productDetailJson);
+            const productDetails: ProductDetails[] = FileUtils.convertJsonToCustomType(productDetailJson);
 
             const addedQuantity = 1;
             const initialQuantity = 1;
-            await cartUtil.addToCart(productDetailsList[0].name, addedQuantity);
 
-            // const individualProductPrice = 15.99;
-            const expectedTotalPrice = productDetailsList[0].price * (initialQuantity + addedQuantity);
+            await cartUtilScreen.addToCart(productDetails[0].name, addedQuantity);
+            const expectedTotalPrice = productDetails[0].price * (initialQuantity + addedQuantity);
 
             await cartScreen.getCartIcon();
-
-            await verifyTotalPriceInCart(expectedTotalPrice);
-
+            await cartUtilScreen.verifyTotalPriceInCart(expectedTotalPrice);
             await myCartScreen.getRemoveItem();
 
             const noItemsLabel = await (await myCartScreen.getNoItemsLabel()).getText();
@@ -74,11 +60,4 @@ describe("Should able to empty the cart", () => {
             throw error;
         }
     });
-
-    async function verifyTotalPriceInCart(expectedTotalPrice: number) {
-        const actualTotalPriceBeforeRemove = await (await myCartScreen.getTotalPriceEle()).getText();
-        const actualTotalPrice = Number(actualTotalPriceBeforeRemove.replace('$', ''));
-
-        expect(actualTotalPrice).toEqual(expectedTotalPrice);
-    }
 })

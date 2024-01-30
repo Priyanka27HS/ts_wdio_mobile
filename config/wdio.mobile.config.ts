@@ -8,12 +8,10 @@ const ANDROID_CAPABILITIES = [
     {
         "appium:platformName": "Android",
         "appium:deviceName": "Pixel 6 Pro API 32",
-        // "appium:app": join(process.cwd(), '/app/android/Sauce_labs.apk'),
         "appium:automationName": "UiAutomator2",
         "appium:udid": "emulator-5554",
         "appium:chromedriverExecutable": `${process.cwd()}/chromedriver-mobile/chromedriver`,
         'appium:app': `${process.cwd()}/app/android/${androidAppName}`,
-        // 'appium:chromedriverExecutable': `${process.cwd()}/app/chromedriver`	       
         // "appium:noReset": true
     }
 ];
@@ -24,7 +22,6 @@ const IOS_CAPABILITIES = [
         "appium:deviceName": "iPhone 15",
         "appium:automationName": "XCUITest",
         "appium:platformVersion": "17.2",
-        // "appium:app": "/Users/testvagrant/Documents/ts_wdio/app/ios/ios_app",
         'appium:app': `${process.cwd()}/app/ios/${iosAppName}`,
     }
 ];
