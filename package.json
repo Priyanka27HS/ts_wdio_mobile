@@ -7,9 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "wdio": "wdio run ./wdio.conf.ts",
     "android": "PLATFORM=ANDROID wdio run ./config/wdio.mobile.config.ts --spec",
-    "test-android": "PLATFORM=ANDROID npx wdio run ./config/wdio.mobile.config.ts --spec test/spec/cart/productCart.test.ts",
+    "test-android": "PLATFORM=ANDROID npx wdio run ./config/wdio.mobile.config.ts --spec test/spec/e2e/addProducts.test.ts",
     "test-ios": "PLATFORM=IOS wdio run ./config/wdio.mobile.config.ts --spec test/spec/e2e/addProducts.test.ts",
-    "test-browserstack": "wdio run ./config/wdio.android.bs.conf.ts --spec test/spec/products/purchaseProduct.test.ts"
+    "test-browserstack": "PLATFORM=ANDROID wdio run ./config/wdio.android.bs.conf.ts --spec test/spec/e2e/addProducts.test.ts"
   },
   "keywords": [],
   "author": "",
