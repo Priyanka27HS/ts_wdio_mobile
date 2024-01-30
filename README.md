@@ -40,11 +40,12 @@ Before you begin with the Mobile Automation using TypeScript, WebdriverIO, and A
 
 # Folder Structure
 
-   * apk: Android app
-   * config: Browserstack configuration file
+   * app: Android and IOS app
+   * config: Browserstack configuration file, wdio configuration file
    * customLogger: Loggers file
 
    * test 
+      - commonFunctions : Util methods
       - resources: Custom types -> Interfaces, test-data -> JSON files
       - screens: Page Object Model (POM) screens
       - spec: All test files
