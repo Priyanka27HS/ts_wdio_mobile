@@ -2,7 +2,6 @@ import { $ } from "@wdio/globals"
 import { LeftScreenMenu } from "./leftScreenMenu";
 import { HomeScreen } from "./homeScreen"
 
-
 export class LogoutScreen {
 
     homeScreen : HomeScreen;
@@ -17,9 +16,7 @@ export class LogoutScreen {
         logOutButton: "//android.widget.Button[@text='LOG OUT']",
         logOutSucessMsg: "//android.widget.TextView[@text='You are successfully logged out.']",
         logOutOkButton: "//android.widget.Button[@text='OK']"
-    
     }
-
 
     public async getLogOutButtonEle() {
         return await $(this.locators.logOutButton);
@@ -33,7 +30,6 @@ export class LogoutScreen {
         return await $(this.locators.logOutSucessMsg);
     }
 
-
     public async logout() : Promise<void> {
 
         (await this.homeScreen.getHamburgerIconEle()).click();
@@ -44,7 +40,5 @@ export class LogoutScreen {
         await (await this.getLogOutOkButtonEle()).waitForDisplayed();
         await (await this.getLogOutOkButtonEle()).click();
         (await this.homeScreen.getProductTextOnHomeScreenEle()).waitForDisplayed();
-
     }
-
 }

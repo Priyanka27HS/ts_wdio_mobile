@@ -39,4 +39,3 @@ export class SwitchContextUtil {
         await this.switchContext('WEBVIEW', timeout);
     }
 }
-

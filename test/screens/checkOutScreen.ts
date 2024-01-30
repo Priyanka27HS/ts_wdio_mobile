@@ -22,7 +22,6 @@ export class CheckOutScreen {
         placeOrderButton: "~Place Order button",
         continueShoppingButton: "~Continue Shopping button",
         orderConfirmation: "//android.view.ViewGroup[@content-desc='checkout complete screen']/android.widget.ScrollView/android.view.ViewGroup/android.widget.TextView[4]"
-
     }
 
     async enterFullName(fullName: string) {

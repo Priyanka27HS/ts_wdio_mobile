@@ -17,7 +17,6 @@ export class LeftScreenMenu {
         logOutButton: '~menu item log out',
         apiCallsButton: '//android.widget.TextView[@text="Api Calls"]',
         sauceBotVideoButton: '//android.view.ViewGroup[@content-desc="menu item sauce bot video"]',
-
     };
 
     async getExpandMenuButton() {

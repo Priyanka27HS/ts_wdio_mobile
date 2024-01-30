@@ -35,7 +35,6 @@ export class BaseActions {
             .perform();
     }
     
-
     public static async swipe(startX: number, startY: number, endY: number): Promise<void> {
         LOGGER.info('*** Performing SWIPE actions ***');
         const swipeCordinates = { startX, startY, endY };

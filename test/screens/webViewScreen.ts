@@ -9,7 +9,6 @@ export class WebViewScreen {
         urlInputField: '//android.widget.EditText[@content-desc="URL input field"]',
         urlInfoLabel: '//android.widget.TextView[@text="Enter an HTTPS url."]',
         goToSiteButton: '//android.view.ViewGroup[@content-desc="Go To Site button"]',
-
     }
 
     async getWebViewLabel() {
@@ -44,5 +43,4 @@ export class WebViewScreen {
         await goToSiteButtonEle.waitForDisplayed();
         await goToSiteButtonEle.click();
     }
-
 }

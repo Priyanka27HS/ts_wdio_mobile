@@ -16,8 +16,8 @@ export class MyCartScreen {
         cartIsEmptyMessage: '//android.widget.TextView[@text="Oh no! Your cart is empty. Fill it up with swag to complete your purchase."]',
         goShoppingButton: '//android.view.ViewGroup[@content-desc="Go Shopping button"]',
         proceedToCheckoutButton: "~Proceed To Checkout button",
-        totalPrice: "~total price"
-
+        totalPrice: "~total price",
+        productText: '//android.widget.TextView[@content-desc="product label"]',
     }
 
     async getMyCartLabel() {
@@ -57,10 +57,13 @@ export class MyCartScreen {
         return await $(this.selectors.totalPrice);
     }
 
+    async getProductText() {
+        return await $$(this.selectors.productText);
+    }
+
     async clickProceedToCheckoutButton() {
         const proceedToCheckoutButtonEle = await $(this.selectors.proceedToCheckoutButton);
         await proceedToCheckoutButtonEle.waitForDisplayed();
         await proceedToCheckoutButtonEle.click();
     }
-
 }

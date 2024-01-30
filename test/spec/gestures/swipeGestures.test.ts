@@ -21,7 +21,6 @@ describe("***** Performing Swipe Gestures *****", () => {
         await appActionsUtil.appActions();
     });
 
-
     it('Scroll until an element is visible on a mobile app', async () => {
         const footerEle = await homeScreen.getFooterLabel();
         await BaseActions.swipeUpFromMiddle();
@@ -38,7 +37,6 @@ describe("***** Performing Swipe Gestures *****", () => {
         await BaseActions.swipe(startX, startY, endY);
         LOGGER.info('***** Vertical swipe operations are done *****');
     });
-    
 
     it('Scroll until an element is visible on a mobile app -> Swipe Gestures Based on Screen Percentages', async () => {
         await (await homeScreen.getFirstItemEle()).waitForDisplayed();
@@ -46,5 +44,4 @@ describe("***** Performing Swipe Gestures *****", () => {
         await BaseActions.swipeByPercentage(await homeScreen.getFooterLabel(), 30, 70);
         LOGGER.info('***** Swipe by percentage is done *****');
     });
-
 })
